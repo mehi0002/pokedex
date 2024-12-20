@@ -1,16 +1,16 @@
 import CaughtStatus from "../CaughtStatus";
 import './Details.css';
 
+// Dispays the pokemon name, image, and caught status
 function Details({poke, catchHandler}){
 
+    /**** Build *****/
     return(
-        <article>
-            <header>
-                <h3>{poke.name}</h3>
-            </header>
+        <>
+            <h3>{poke.name}</h3>
             <CaughtStatus pokeName={poke.name} caught={poke.CaughtStatus} toggle={catchHandler} />
-            <img src={poke['sprites']['other']['official-artwork']['front_default']} alt={`Official artwork for ${poke.name}`}/>
-          </article>
+            <img src={poke['sprites']['other']['official-artwork']['front_default']} aria-hidden='true'/>
+        </>
     );
 }
 

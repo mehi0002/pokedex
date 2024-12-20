@@ -1,21 +1,19 @@
 import PokemonCard from '../PokemonCard';
 import './PokemonList.css';
 
+// Displays a list of pokemon info
+// Displays stats when a pokemon is selected
 function PokemonList({pokemon}) {
 
+  /**** Build *****/
   return (
     <article>
-      <ul>
-        {/* {pokemon.map( (poke, index) => 
-          <li key={index}>
-            <PokemonCard pokeID={index+1} />
+      <ul id='pokemonList'>
+        {pokemon.map( (poke, index) => 
+          <li key={index+1}>
+            <PokemonCard url={pokemon[index].url} />
           </li>
-        )} */}
-        <li>
-        {console.log(pokemon)}
-        {console.log(`Sending pokemon ${pokemon[0].name} at ${pokemon[0].url}`)}
-        <PokemonCard url={pokemon[0].url} />
-        </li>
+        )}
       </ul>
     </article>
   );

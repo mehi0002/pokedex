@@ -1,15 +1,18 @@
 import './CaughtStatus.css';
 
+// Indicates if the pokemon is caught or not
 function CaughtStatus({pokeName, caught, toggle}) {
   
   let name = '';
   pokeName ? name = pokeName : name = 'this pokemon';
 
+  /**** Handlers *******/
   function clickHandler(){
     console.log('toggling caught status...')
     toggle();
   }
 
+  /**** Build *****/
   return (
     <button 
       aria-label={caught ? 
@@ -22,8 +25,7 @@ function CaughtStatus({pokeName, caught, toggle}) {
         src={caught ? 
           '/src/components/CaughtStatus/assets/caught.svg' : 
           '/src/components/CaughtStatus/assets/uncaught.png'}
-        alt={caught ? 'red and white pokeball' : 'uncoloured pokeball'}
-        aria-label={caught ? `you have caught ${name}` : `you have not caught ${name}`}
+        aria-hidden='true'
       />
     </button>
   );

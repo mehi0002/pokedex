@@ -13,7 +13,7 @@ function App() {
     }, [] );
 
   return (
-    <main>
+    <main className="container-fluid">
       {pokemon[0] ?
         <PokemonList pokemon={pokemon} /> :
         <p>loading...</p>
