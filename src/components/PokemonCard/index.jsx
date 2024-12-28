@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import CaughtStatus from '../CaughtStatus';
 import './PokemonCard.css';
 
@@ -23,7 +24,9 @@ function PokemonCard({url, caught, catchHandler}) {
     { poke.id ?
         <>
           <h3>{poke.name}</h3>
-          <img src={poke['sprites']['other']['official-artwork']['front_default']} aria-hidden='true'/>
+          <Link to={`/${poke.name}`} aria-label={`view stats for ${poke.name}`}>
+            <img src={poke['sprites']['other']['official-artwork']['front_default']} aria-hidden='true'/>
+          </Link>
           <CaughtStatus name={poke.name} caught={caught} toggle={catchHandler}/> 
         </> :
         <p>loading</p>
