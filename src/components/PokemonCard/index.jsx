@@ -1,25 +1,27 @@
 import { useState, useEffect } from 'react';
-import Details from '../Details';
+import CardHeader from '../CardHeader';
 import Stats from '../Stats';
 import './PokemonCard.css';
 
 // Displays the Pokemon details.
-// Handles caught status.
-function PokemonCard(props) {
+function PokemonCard({url}) {
 
-  // pokemon state object
-  const [poke, setPoke] = useState({});     
+  /*** States ***/
+  const [poke, setPoke] = useState({});               // Single pokemon
+  const [viewStats, setViewStats] = useState(false);  // Tracks whether stats are visible
 
-  // Grab the pokemon with the given url from the Poke API
+  /*** Effects ***/
+  
+  // fetch pokemon from Poke API
   useEffect( () => {                        
-    fetch(props.url)
+    fetch(url)
     .then( response => response.json())
-    .then(json => { setPoke(json); });
-  }, []);
+    .then(json => setPoke(json) )}
+  , []);
 
-  // Toggles the caught status and updates the pokemon state
-  function toggleCaughtHandler(){           
-    console.log(`setting caught status to ${!poke.CaughtStatus}`)
+  /*** Functions ***/
+  function openCloseStats(){
+    setViewStats( prevState => !prevState);
   }
 
   /***** Build *****/
@@ -28,10 +30,11 @@ function PokemonCard(props) {
       { poke.id ?
         <>
           <header>
-            <Details poke={poke} catchHandler={toggleCaughtHandler}/> 
+            <CardHeader poke={poke}/> 
+            <button onClick={openCloseStats}> {`View ${poke.name}'s stats`} </button>
           </header>
           <main>
-            <Stats poke={poke} />
+            <Stats poke={poke} visible={viewStats}/>
           </main>
         </>
         :
