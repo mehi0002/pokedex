@@ -3,6 +3,7 @@ import Type from '../Type/Type';
 import StatMeter from '../StatMeter/StatMeter';
 
 // Displays a pokemon's stats
+function Stats({poke}) {
 function Stats({poke, visible}) {
   
   return (

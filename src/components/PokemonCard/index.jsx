@@ -26,8 +26,9 @@ function PokemonCard({url}) {
 
   /***** Build *****/
   return (
-    <article>
-      { poke.id ?
+    <article className="card">
+    {console.log(poke)}
+    { poke.id ?
         <>
           <header>
             <CardHeader poke={poke}/> 

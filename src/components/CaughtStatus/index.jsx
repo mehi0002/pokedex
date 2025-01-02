@@ -1,10 +1,10 @@
 import './CaughtStatus.css';
 
 // Indicates if the pokemon is caught or not
-function CaughtStatus({pokeName, caught, toggle}) {
+function CaughtStatus({name, caught, toggle}) {
   
-  let name = '';
-  pokeName ? name = pokeName : name = 'this pokemon';
+  let pokeName = '';
+  name ? pokeName = name : pokeName = 'this pokemon';
 
   /**** Handlers *******/
   function clickHandler(){
@@ -16,8 +16,8 @@ function CaughtStatus({pokeName, caught, toggle}) {
   return (
     <button 
       aria-label={caught ? 
-        `click to release ${name}` :
-        `click to catch ${name}`
+        `click to release ${pokeName}` :
+        `click to catch ${pokeName}`
       }
       onClick={clickHandler}>
 

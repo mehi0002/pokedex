@@ -3,7 +3,7 @@ import './PokemonList.css';
 
 // Displays a list of pokemon info
 // Displays stats when a pokemon is selected
-function PokemonList({pokemon}) {
+function PokemonList({pokemon, caughtList, catchHandler}) {
 
   /**** Build *****/
   return (
@@ -11,7 +11,8 @@ function PokemonList({pokemon}) {
       <ul id='pokemonList'>
         {pokemon.map( (poke, index) => 
           <li key={index+1}>
-            <PokemonCard url={pokemon[index].url} />
+            {/* <PokemonCard poke={poke} caught={caughtList[index]} catchHandler={catchHandler} /> */}
+            <PokemonCard url={poke.url} caught={false} catchHandler={catchHandler} />
           </li>
         )}
       </ul>
