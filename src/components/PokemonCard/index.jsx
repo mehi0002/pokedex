@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
-import CardHeader from '../CardHeader';
-import Stats from '../Stats';
+// import Stats from '../Stats';
+import CaughtStatus from '../CaughtStatus';
 import './PokemonCard.css';
 
 // Displays the Pokemon details.
-function PokemonCard({url}) {
+function PokemonCard({name, url, caught}) {
 
   /*** States ***/
   const [poke, setPoke] = useState({});               // Single pokemon
@@ -20,23 +20,34 @@ function PokemonCard({url}) {
   , []);
 
   /*** Functions ***/
-  function openCloseStats(){
-    setViewStats( prevState => !prevState);
-  }
+  // function openCloseStats(){
+  //   console.log('open/close stats...')
+  //   setViewStats( prevState => !prevState);
+  // }
 
   /***** Build *****/
   return (
     <article className="card">
-    {console.log(poke)}
     { poke.id ?
         <>
-          <header>
-            <CardHeader poke={poke}/> 
-            <button onClick={openCloseStats}> {`View ${poke.name}'s stats`} </button>
-          </header>
-          <main>
-            <Stats poke={poke} visible={viewStats}/>
-          </main>
+          {/* <header> */}
+            <h2>{poke.name}</h2>
+            {/* <button onClick={openCloseStats} aria-label={`View ${poke.name}'s stats`}> */}
+              <img src={poke['sprites']['other']['official-artwork']['front_default']} alt={`Official art of ${poke.name}`}/> 
+            {/* </button> */}
+            <CaughtStatus name={poke.name} caught={caught}></CaughtStatus>
+          {/* </header> */}
+
+           {/* viewStats &&
+          //   <main>
+          //     <div className="cardHeader">
+          //       <h3>{poke.name}</h3>
+          //       <img src={poke['sprites']['other']['official-artwork']['front_default']}/>
+          //       <CaughtStatus name={poke.name} caught={} toggle={}></CaughtStatus>
+          //     </div>
+          //     <Stats poke={poke}/>
+          //   </main>
+          // */}
         </>
         :
         <p>loading...</p>

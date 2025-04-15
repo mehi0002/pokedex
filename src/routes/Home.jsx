@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import PokemonList from '../components/PokemonList'
+import Gallery from '../components/Gallery'
 
 function Home (){
 
@@ -28,7 +28,7 @@ function Home (){
         <main className="container-fluid">
         {console.log(pokemon)}
         {pokemon[0] ?
-            <PokemonList pokemon={pokemon} caughtList={caughtList} catchHandler={toggleCaughtHandler}/> :
+            <Gallery pokemon={pokemon} caughtList={caughtList} catchHandler={toggleCaughtHandler}/> :
             <p>loading...</p>
         }
         </main>

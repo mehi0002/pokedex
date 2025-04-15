@@ -1,9 +1,9 @@
 import PokemonCard from '../PokemonCard';
-import './PokemonList.css';
+import './Gallery.css';
 
 // Displays a list of pokemon info
 // Displays stats when a pokemon is selected
-function PokemonList({pokemon, caughtList, catchHandler}) {
+function Gallery({pokemon, caught, catchHandler}) {
 
   /**** Build *****/
   return (
@@ -12,7 +12,7 @@ function PokemonList({pokemon, caughtList, catchHandler}) {
         {pokemon.map( (poke, index) => 
           <li key={index+1}>
             {/* <PokemonCard poke={poke} caught={caughtList[index]} catchHandler={catchHandler} /> */}
-            <PokemonCard url={poke.url} caught={false} catchHandler={catchHandler} />
+            <PokemonCard name={poke.name} url={poke.url} caught={ caught[poke.name] ? true : false } catchHandler={catchHandler} />
           </li>
         )}
       </ul>
@@ -20,4 +20,4 @@ function PokemonList({pokemon, caughtList, catchHandler}) {
   );
 }
 
-export default PokemonList;
+export default Gallery;
