@@ -14,7 +14,8 @@ function CaughtStatus({name, caught, toggle}) {
 
   /**** Build *****/
   return (
-    <button 
+    <button
+      className = "status" 
       aria-label={caught ? 
         `click to release ${pokeName}` :
         `click to catch ${pokeName}`

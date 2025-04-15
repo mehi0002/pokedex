@@ -30,13 +30,11 @@ function PokemonCard({name, url, caught}) {
     <article className="card">
     { poke.id ?
         <>
-          {/* <header> */}
             <h2>{poke.name}</h2>
-            {/* <button onClick={openCloseStats} aria-label={`View ${poke.name}'s stats`}> */}
+            {/* <div className='imageContainer'> */}
               <img src={poke['sprites']['other']['official-artwork']['front_default']} alt={`Official art of ${poke.name}`}/> 
-            {/* </button> */}
+            {/* </div> */}
             <CaughtStatus name={poke.name} caught={caught}></CaughtStatus>
-          {/* </header> */}
 
            {/* viewStats &&
           //   <main>
