@@ -7,8 +7,8 @@ function Gallery({pokemon, caught, catchHandler}) {
 
   /**** Build *****/
   return (
-    <article>
-      <ul id='pokemonList'>
+    // <article>
+      <ul id='pokemonGallery'>
         {pokemon.map( (poke, index) => 
           <li key={index+1}>
             {/* <PokemonCard poke={poke} caught={caughtList[index]} catchHandler={catchHandler} /> */}
@@ -16,7 +16,7 @@ function Gallery({pokemon, caught, catchHandler}) {
           </li>
         )}
       </ul>
-    </article>
+    // </article>
   );
 }
 
