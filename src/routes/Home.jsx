@@ -5,17 +5,17 @@ function Home (){
 
     /*** States ***/
     const [pokemon, setPokemon] = useState([]);
-    const [caughtList, setCaughtList] = useLocalStorage('caught', []);
+    const [url, setURL] = useState('https://pokeapi.co/api/v2/pokemon');
+    const [caughtList, setCaughtList] = useLocalStorage('caught', ['bulbasaur']);
 
     /*** Effects ***/
 
-    // Fetching the first 20 pokemon from the Poke API
-    useEffect(() => {                                   
-        fetch('https://pokeapi.co/api/v2/pokemon')
-        .then(response => response.json())
-        .then(json => {setPokemon(json.results); console.log('getting first 20 pokemon...')} );
-        }, [] );
+    // Fetch first 20 pokemon on load
+    useEffect(() => { 
+        fetchPokeList(); 
+    }, [] );
 
+    //Save caught list to local storage when updated
     useEffect( () => {
         console.log(`Caught List: ${caughtList}`)
         localStorage.setItem('caught', caughtList);
@@ -27,11 +27,20 @@ function Home (){
         const obj = localStorage.getItem(key);
         return( useState( obj ? obj : defaultValue));
       }
+
+    function fetchPokeList(){
+        fetch(url)
+        .then(response => response.json())
+        .then(json => {
+            setPokemon([...pokemon, ...json.results]); 
+            setURL(json.next);
+            console.log(`fetching pokemon list: ${json}`)} );
+    }
     
     /*** Handlers ***/
 
     // Toggles the caught status and updates the pokemon state
-    function toggleCaughtHandler(pokeName){           
+    function toggleCaughtHandler(pokeName){  
         console.log(`toggling caught status for ${pokeName}`);
         
         caughtList.includes(pokeName) ?
@@ -42,13 +51,17 @@ function Home (){
     /*** Build ***/
     return (
         <main className="container-fluid">
-            {console.log(pokemon)}
+            {console.log(`Pokemon: ${pokemon}`)}
             { pokemon[0] ?
-                <Gallery 
-                    pokemon={pokemon} 
-                    caught={caughtList}
-                    catchHandler={toggleCaughtHandler}
-                /> :
+                <>
+                    <Gallery 
+                        pokemon={pokemon} 
+                        caught={caughtList}
+                        catchHandler={toggleCaughtHandler}
+                    /> 
+                    <button onClick={fetchPokeList}>Load More</button>
+                </>
+                :
                 <p>loading...</p>
             }
         </main>

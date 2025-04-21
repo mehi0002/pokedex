@@ -19,9 +19,25 @@ function Gallery({pokemon, caught, catchHandler}) {
           </li>
         )}
       </ul>
-      <button>Load More</button>
     </article>
   );
+
+  // return (
+  //   <article id='pokemonGallery'>
+  //     <ul>
+  //       {pokemon.map( (poke, index) => 
+  //         <li key={index+1}>
+  //           <PokemonCard 
+  //             poke={poke} 
+  //             caught={ caught.includes(poke.name) ? true : false } 
+  //             catchHandler={catchHandler} 
+  //           />
+  //         </li>
+  //       )}
+  //     </ul>
+  //     <button>Load More</button>
+  //   </article>
+  // );
 }
 
 export default Gallery;

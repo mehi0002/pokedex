@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
-// import Stats from '../Stats';
 import CaughtStatus from '../CaughtStatus';
 import './PokemonCard.css';
 
 // Displays the Pokemon details.
 function PokemonCard({name, url, caught, catchHandler}) {
+
+// function PokemonCard({poke, caught, catchHandler}) {
 
   /*** States ***/
   const [poke, setPoke] = useState({});               // Single pokemon
@@ -32,6 +33,20 @@ function PokemonCard({name, url, caught, catchHandler}) {
       }
     </article>
   );
+
+  // return (
+  //   <article className="card">
+  //     { poke.name ?
+  //       <>
+  //           <h2>{poke.name}</h2>
+  //           <CaughtStatus name={poke.name} caught={caught} toggleHandler={catchHandler} />
+  //           <img src={poke['sprites']['other']['official-artwork']['front_default']} alt={`Official art of ${poke.name}`}/> 
+  //       </>
+  //       :
+  //       <p>loading...</p>
+  //     }
+  //   </article>
+  // );
       
 }
 
