@@ -1,9 +1,19 @@
+import ListItem from "../ListItem";
 
-function CaughtList(caught){
+function CaughtList(caughtList, catchHandler){
 
     return(
-        <article>
-            <header></header>
+        <article id="caughtList">
+            <header>Caught Pokemon</header>
+            <main>
+                <ul>
+                    { 
+                        caughtList.map( (pokeName, index) => 
+                            <li key={index}> <ListItem name={pokeName} caught="true" catchHandler={catchHandler}/> </li>
+                        )
+                    }
+                </ul>
+            </main>
         </article>
     );
 }

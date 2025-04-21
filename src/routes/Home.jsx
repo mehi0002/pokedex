@@ -5,7 +5,7 @@ function Home (){
 
     /*** States ***/
     const [pokemon, setPokemon] = useState([]);
-    const [caught, setCaught] = useLocalStorage('caught', {});
+    const [caughtList, setCaughtList] = useLocalStorage('caught', []);
 
     /*** Effects ***/
 
@@ -13,8 +13,14 @@ function Home (){
     useEffect(() => {                                   
         fetch('https://pokeapi.co/api/v2/pokemon')
         .then(response => response.json())
-        .then(json => {setPokemon(json.results); console.log('getting first 20 pokemon...')} )
+        .then(json => {setPokemon(json.results); console.log('getting first 20 pokemon...')} );
         }, [] );
+
+    useEffect( () => {
+        console.log(`Caught List: ${caughtList}`)
+        localStorage.setItem('caught', caughtList);
+        }, [caughtList] 
+    );
 
     /*** Functions ***/
     function useLocalStorage(key, defaultValue){
@@ -25,8 +31,12 @@ function Home (){
     /*** Handlers ***/
 
     // Toggles the caught status and updates the pokemon state
-    function toggleCaughtHandler(){           
-        console.log(`toggling caught status...`)
+    function toggleCaughtHandler(pokeName){           
+        console.log(`toggling caught status for ${pokeName}`);
+        
+        caughtList.includes(pokeName) ?
+        setCaughtList( caughtList.filter(poke => poke != pokeName) ) :
+        setCaughtList( [...caughtList, pokeName] );
     }
 
     /*** Build ***/
@@ -34,8 +44,12 @@ function Home (){
         <main className="container-fluid">
             {console.log(pokemon)}
             { pokemon[0] ?
-            <Gallery pokemon={pokemon} caught={caught}/> :
-            <p>loading...</p>
+                <Gallery 
+                    pokemon={pokemon} 
+                    caught={caughtList}
+                    catchHandler={toggleCaughtHandler}
+                /> :
+                <p>loading...</p>
             }
         </main>
       );

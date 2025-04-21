@@ -10,7 +10,12 @@ function Gallery({pokemon, caught, catchHandler}) {
       <ul>
         {pokemon.map( (poke, index) => 
           <li key={index+1}>
-            <PokemonCard name={poke.name} url={poke.url} caught={ caught[poke.name] ? true : false } catchHandler={catchHandler} />
+            <PokemonCard 
+              name={poke.name} 
+              url={poke.url} 
+              caught={ caught.includes(poke.name) ? true : false } 
+              catchHandler={catchHandler} 
+            />
           </li>
         )}
       </ul>
