@@ -2,10 +2,8 @@ import { useState, useEffect } from 'react';
 import CaughtStatus from '../CaughtStatus';
 import './PokemonCard.css';
 
-// Displays the Pokemon details.
-function PokemonCard({name, url, caught, catchHandler}) {
-
-// function PokemonCard({poke, caught, catchHandler}) {
+// Displays the Pokemon name, image, and caught status.
+function PokemonCard({url, caught, catchHandler, selectHandler}) {
 
   /*** States ***/
   const [poke, setPoke] = useState({});               // Single pokemon
@@ -19,34 +17,29 @@ function PokemonCard({name, url, caught, catchHandler}) {
     .then(json => setPoke(json) )}
   , []);
 
+  /*** Handlers ***/
+  function clickHandler(e){
+    e.preventDefault();
+    selectHandler(poke.name);
+  }
+
   /***** Build *****/
+
   return (
-    <article className="card">
-      { poke.id ?
+    <article className="card pokeCard">
+      { poke.name ?
         <>
-            <h2>{name}</h2>
-            <CaughtStatus name={name} caught={caught} toggleHandler={catchHandler} />
-            <img src={poke['sprites']['other']['official-artwork']['front_default']} alt={`Official art of ${poke.name}`}/> 
+          <button onClick={clickHandler} className="cardTitle">
+            <h2>{poke.name}</h2>
+            <img onClick={clickHandler} src={poke['sprites']['other']['official-artwork']['front_default']} alt={`Official art of ${poke.name}`}/> 
+          </button>
+          <CaughtStatus name={poke.name} caught={caught} toggleHandler={catchHandler} />
         </>
         :
         <p>loading...</p>
       }
     </article>
   );
-
-  // return (
-  //   <article className="card">
-  //     { poke.name ?
-  //       <>
-  //           <h2>{poke.name}</h2>
-  //           <CaughtStatus name={poke.name} caught={caught} toggleHandler={catchHandler} />
-  //           <img src={poke['sprites']['other']['official-artwork']['front_default']} alt={`Official art of ${poke.name}`}/> 
-  //       </>
-  //       :
-  //       <p>loading...</p>
-  //     }
-  //   </article>
-  // );
       
 }
 

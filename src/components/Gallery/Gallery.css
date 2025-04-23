@@ -7,9 +7,10 @@
 
 #pokemonGallery ul{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 1rem;
     width:fit-content;
+    padding: 0;
 }
 
 #pokemonGallery ul li {

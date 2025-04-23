@@ -1,43 +1,30 @@
+// import { useEffect } from 'react';
+// import { useState } from 'react';
 import PokemonCard from '../PokemonCard';
 import './Gallery.css';
 
-// Displays a list of pokemon info
-function Gallery({pokemon, caught, catchHandler}) {
+// Displays a list of pokemon cards
+function Gallery({pokemonList, caught, catchHandler, selectPokeHandler}) {
 
   /**** Build *****/
   return (
-    <article id='pokemonGallery'>
+    <div id='pokemonGallery'>
       <ul>
-        {pokemon.map( (poke, index) => 
+        {/* {console.log(`Pokemon Gallery: ${pokemon}`)} */}
+        {pokemonList.map( (poke, index) => 
           <li key={index+1}>
             <PokemonCard 
-              name={poke.name} 
               url={poke.url} 
               caught={ caught.includes(poke.name) ? true : false } 
               catchHandler={catchHandler} 
+              selectHandler={selectPokeHandler}
             />
           </li>
         )}
       </ul>
-    </article>
+    </div>
   );
 
-  // return (
-  //   <article id='pokemonGallery'>
-  //     <ul>
-  //       {pokemon.map( (poke, index) => 
-  //         <li key={index+1}>
-  //           <PokemonCard 
-  //             poke={poke} 
-  //             caught={ caught.includes(poke.name) ? true : false } 
-  //             catchHandler={catchHandler} 
-  //           />
-  //         </li>
-  //       )}
-  //     </ul>
-  //     <button>Load More</button>
-  //   </article>
-  // );
 }
 
 export default Gallery;
