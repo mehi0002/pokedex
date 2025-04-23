@@ -26,11 +26,11 @@ function PokemonInfo (url){
                     <>
                         <h2>{poke.name}</h2>
                         <img src={poke['sprites']['other']['official-artwork']['front_default']} alt={`Official art of ${poke.name}`}/> 
+                        <Stats poke={poke}/>
                     </>
                 :
                 <p>loading...</p>
             }
-                {/* <Stats /> */}
         </aside>
     )
 }
