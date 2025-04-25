@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import CaughtStatus from '../CaughtStatus';
 import './PokemonCard.css';
 
@@ -14,13 +15,14 @@ function PokemonCard({url, caught, catchHandler, selectHandler}) {
   useEffect( () => {                        
     fetch(url)
     .then( response => response.json())
-    .then(json => setPoke(json) )}
-  , []);
+    .then(json => setPoke(json) )
+  }, []);
 
   /*** Handlers ***/
   function clickHandler(e){
     e.preventDefault();
-    selectHandler(poke.name);
+    // selectHandler({...poke});
+
   }
 
   /***** Build *****/
@@ -29,10 +31,18 @@ function PokemonCard({url, caught, catchHandler, selectHandler}) {
     <article className="card pokeCard">
       { poke.name ?
         <>
-          <button onClick={clickHandler} className="cardTitle">
-            <h2>{poke.name}</h2>
-            <img onClick={clickHandler} src={poke['sprites']['other']['official-artwork']['front_default']} alt={`Official art of ${poke.name}`}/> 
-          </button>
+          {/* Mobile version - opens a new view */}
+          <Link to={`/${poke.name}`} className="cardTitle mobile">
+            <p>{poke.name}</p>
+            <img src={poke['sprites']['other']['official-artwork']['front_default']} alt={`Official art of ${poke.name}`}/> 
+          </Link>
+          
+          {/* Tablet version - updates a sidebar */}
+          {/* <button onClick={clickHandler} className="cardTitle tablet">
+            <p>{poke.name}</p>
+            <img src={poke['sprites']['other']['official-artwork']['front_default']} alt={`Official art of ${poke.name}`}/> 
+          </button> */}
+          
           <CaughtStatus name={poke.name} caught={caught} toggleHandler={catchHandler} />
         </>
         :

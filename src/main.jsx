@@ -5,14 +5,14 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
 import App from './App.jsx';
 import Home from './routes/Home.jsx';
-import Details from './routes/Details.jsx';
+import Info from './routes/Info.jsx';
 
 const router = createBrowserRouter([
   { path: '/', 
     element: <App/>,
     children: [
       { path: '/', element: <Home/> },
-      { path: '/:name', element: <Details/>}
+      { path: '/:pokeName', element: <Info/>}
     ]
   }
 ]);

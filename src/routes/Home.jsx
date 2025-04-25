@@ -9,7 +9,6 @@ function Home (){
     const [url, setURL] = useState('https://pokeapi.co/api/v2/pokemon');
     const [caughtList, setCaughtList] = useLocalStorage('caught', []);
     const [selectedPoke, setSelectedPoke] = useState('');
-    const [displayVis, setDisplayVis] = useState(false);
 
     /*** Effects ***/
 
@@ -53,13 +52,10 @@ function Home (){
         setCaughtList( [...caughtList, pokeName] );
     }
 
-    function selectPokeHandler(pokeName){
-        const tempPoke = pokemonList.filter( poke => poke.name == pokeName);
+    function selectPokeHandler(poke){
 
-        console.log(`selecting ${pokeName}`);
-        console.log(`found ${tempPoke[0].url}`);
-        
-        setSelectedPoke(tempPoke[0]);
+        console.log(`selecting ${JSON.stringify(poke)}`);
+        setSelectedPoke({...poke});
     }
 
     /*** Build ***/
@@ -68,12 +64,13 @@ function Home (){
             {console.log(`Pokemon List: ${pokemonList}`)}
             {console.log(`Selected Pokemon: ${JSON.stringify(selectedPoke)}`)}
             
-            { selectedPoke &&
-                <PokemonInfo  
-                    // className={displayVis ? "popup" : ""}
-                    url={selectedPoke.url} 
-                />
-            }
+            <aside id="pokeInfo" className="card tablet">
+                { selectedPoke &&
+                    <PokemonInfo  
+                        poke = {selectedPoke}
+                    />
+                }
+            </aside>
             
             { pokemonList[0] ?
                 <>
