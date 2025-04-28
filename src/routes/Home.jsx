@@ -1,12 +1,17 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Gallery from '../components/Gallery';
 import PokemonInfo  from '../components/PokemonInfo';
+import CaughtList from '../components/CaughtList';
 
 function Home (){
+
+    let navigate = useNavigate();
 
     /*** States ***/
     const [pokemonList, setpokemonList] = useState([]);
     const [url, setURL] = useState('https://pokeapi.co/api/v2/pokemon');
+    const [pokemon, setPokemon] = useState([]);
     const [caughtList, setCaughtList] = useLocalStorage('caught', []);
     const [selectedPoke, setSelectedPoke] = useState('');
 
@@ -14,14 +19,15 @@ function Home (){
 
     // Fetch first 20 pokemon on load
     useEffect(() => { 
-        fetchPokeList(); 
+        // fetchPokeList(); 
+        fetchPokemon();
         
     }, [] );
 
     //Save caught list to local storage when updated
     useEffect( () => {
-        console.log(`Caught List: ${caughtList}`)
-        localStorage.setItem('caught', JSON.stringify(caughtList) );
+       localStorage.setItem('caught', JSON.stringify(caughtList) );
+       {console.log(`Caught List: ${caughtList}`)}
     }, [caughtList] );
 
     /*** Functions ***/
@@ -41,46 +47,91 @@ function Home (){
             setURL(json.next);
         } );
     }
+
+    async function fetchPokemon(){
+        const listResults = [];
+        const pokeURLs = [];
+        const pokeList = []
+
+        // Get the list of pokemon names and urls
+        await fetch(url)
+        .then(response => response.json())
+        .then(json => {
+            listResults.push(...json.results);
+            setpokemonList([...pokemonList, ...json.results]);
+            setURL(json.next);
+        })
+        .catch(error => console.log(`error getting pokemon names and urls: ${error}`));
+
+        listResults.map(poke => pokeURLs.push(poke.url))
+
+        // Get the info for each pokemon
+        const promiseList = pokeURLs.map(pokeURL => fetch(pokeURL));
+
+        // await Promise.allSettled(promiseList)
+        // .then(responses => Promise.allSettled( responses.map(response => response.value.json())))
+        // .then(data => setPokemon([...pokemon, ...data]))
+        // .catch(error => console.log(`Error fetching pokemon info: ${error}`));
+
+        await Promise.allSettled(promiseList)
+        .then(responses => Promise.allSettled( responses.map(response => response.value.json())))
+        .then(data => data.map(poke => pokeList.push(poke.value)))
+        .catch(error => console.log(`Error fetching pokemon info: ${error}`));
+
+        setPokemon([...pokemon, ...pokeList])
+    }
+
+    function navigateBack(){
+        navigate(-1);
+    }
     
     /*** Handlers ***/
 
     // Toggles the caught status and updates the pokemon state
     function toggleCaughtHandler(pokeName){  
-        
+
         caughtList.includes(pokeName) ?
-        setCaughtList( caughtList.filter(poke => poke != pokeName) ) :
+        setCaughtList( caughtList.filter(caughtPoke => caughtPoke != pokeName) ) :
         setCaughtList( [...caughtList, pokeName] );
     }
 
-    function selectPokeHandler(poke){
+    function selectPokeHandler(selected){
+        const newPoke = pokemon.find(poke => poke.name == selected);
+        setSelectedPoke({...newPoke});
 
-        console.log(`selecting ${JSON.stringify(poke)}`);
-        setSelectedPoke({...poke});
+        // navigate('#pokeInfo');
     }
 
     /*** Build ***/
     return (
         <main id="siteContent" className="container-fluid">
-            {console.log(`Pokemon List: ${pokemonList}`)}
-            {console.log(`Selected Pokemon: ${JSON.stringify(selectedPoke)}`)}
+            <h1>Pokedex</h1>
             
-            <aside id="pokeInfo" className="card tablet">
-                { selectedPoke &&
-                    <PokemonInfo  
-                        poke = {selectedPoke}
-                    />
-                }
-            </aside>
+            {/* {console.log(`Pokemon List: ${JSON.stringify(pokemonList)}`)} */}
+            {/* {console.log(`Pokemon: ${JSON.stringify(pokemon)}`)} */}
+            {/* {console.log(`Selected Pokemon: ${JSON.stringify(selectedPoke)}`)}  */}
             
-            { pokemonList[0] ?
+            { selectedPoke &&
+                <aside id="pokeInfo" className="card tablet" >
+                        <PokemonInfo  
+                            poke = {selectedPoke}
+                        />
+                    {/* <button role="link" className="skipLink" onClick={navigateBack} >Back</button> */}
+                </aside>
+            }
+
+            { pokemon[0] ?
                 <>
+                    {/* <CaughtList pokeList={pokemonList} caughtList={caughtList} catchHandler={toggleCaughtHandler} /> */}
                     <Gallery 
-                        pokemonList={pokemonList} 
+                        pokemonList={pokemon} 
                         caught={caughtList}
                         catchHandler={toggleCaughtHandler}
                         selectPokeHandler = {selectPokeHandler}
                     /> 
-                    <button onClick={fetchPokeList}>Load More</button>
+                    {/* <button onClick={fetchPokeList}>Load More</button> */}
+                    <button onClick={fetchPokemon}>Load More</button>
+
                 </>
                 :
                 <p>loading...</p>

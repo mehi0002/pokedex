@@ -1,18 +1,24 @@
 import ListItem from "../ListItem";
 
-function CaughtList(caughtList, catchHandler){
+function CaughtList({caughtList, catchHandler}){
 
     return(
         <article id="caughtList">
-            <header>Caught Pokemon</header>
+            <header><h2>Caught Pokemon</h2></header>
             <main>
-                <ul>
-                    { 
-                        caughtList.map( (pokeName, index) => 
-                            <li key={index}> <ListItem name={pokeName} caught="true" catchHandler={catchHandler}/> </li>
-                        )
-                    }
-                </ul>
+                { caughtList[0] ?
+                    <ul>
+                        {console.log(`Caught List: ${caughtList}`)}
+                        { 
+                            caughtList.map( (poke, index) => {                            
+                                console.log(`List item: ${JSON.stringify(poke)}`);
+                                <li key={index}> <ListItem url={poke.url} caught={true} catchHandler={catchHandler}/> </li>
+                            })
+                        }
+                    </ul>
+                :
+                    <p>no pokemon caught!</p>
+                }
             </main>
         </article>
     );
