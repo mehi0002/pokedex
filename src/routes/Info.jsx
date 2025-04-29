@@ -20,10 +20,14 @@ function Info(){
     /**** Build *****/
     return(
         <>
-            <Link to='/'>back</Link>
-            <article>
-                <PokemonInfo poke={poke} />
-            </article>
+            { poke.id ?
+                <>
+                    <Link to='/'>back</Link>
+                    <PokemonInfo poke={poke} />
+                </>
+                :
+                <p>loading</p>
+            }
         </>
     );
 }

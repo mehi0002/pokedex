@@ -13,16 +13,11 @@ function Gallery({pokemonList, caught, catchHandler, selectPokeHandler}) {
         {console.log(`Pokemon Gallery: ${pokemonList}`)}
         { pokemonList.map( (poke, index) => 
           <li key={index+1}>
-            {/* <PokemonCard 
-              url={poke.url} 
-              caught={ caught.includes(poke.name) ? true : false } 
-              catchHandler={catchHandler} 
-              selectHandler={selectPokeHandler}
-            /> */}
             <PokemonCard 
               name = {poke.name} 
-              img = {poke['sprites']['other']['official-artwork']['front_default']}
-              caught={ caught.includes(poke.name) ? true : false } 
+              image = {poke['sprites']['other']['official-artwork']['front_default']}
+              alt = {`Official art of ${poke.name}`}
+              caught={ caught.find(caughtPoke => caughtPoke.name == poke.name) ? true : false } 
               catchHandler={catchHandler} 
               selectHandler={selectPokeHandler}
             />

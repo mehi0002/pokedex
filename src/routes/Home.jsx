@@ -89,10 +89,12 @@ function Home (){
 
     // Toggles the caught status and updates the pokemon state
     function toggleCaughtHandler(pokeName){  
+        const selected = pokemon.find(poke => poke.name == pokeName);
+        const caught = caughtList.filter(poke => poke.name == pokeName);
 
-        caughtList.includes(pokeName) ?
-        setCaughtList( caughtList.filter(caughtPoke => caughtPoke != pokeName) ) :
-        setCaughtList( [...caughtList, pokeName] );
+        caught[0] ?
+        setCaughtList( caughtList.filter(caughtPoke => caughtPoke.name != pokeName) ) :
+        setCaughtList( [...caughtList, {name:selected.name, sprite:selected['sprites']['front_default']}] );
     }
 
     function selectPokeHandler(selected){
@@ -122,7 +124,7 @@ function Home (){
 
             { pokemon[0] ?
                 <>
-                    {/* <CaughtList pokeList={pokemonList} caughtList={caughtList} catchHandler={toggleCaughtHandler} /> */}
+                    <CaughtList caughtList={caughtList} catchHandler={toggleCaughtHandler} />
                     <Gallery 
                         pokemonList={pokemon} 
                         caught={caughtList}

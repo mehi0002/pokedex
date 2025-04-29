@@ -1,4 +1,4 @@
-import ListItem from "../ListItem";
+import CaughtStatus from "../CaughtStatus";
 
 function CaughtList({caughtList, catchHandler}){
 
@@ -8,12 +8,19 @@ function CaughtList({caughtList, catchHandler}){
             <main>
                 { caughtList[0] ?
                     <ul>
-                        {console.log(`Caught List: ${caughtList}`)}
+                        {/* {console.log(`Caught List: ${caughtList}`)} */}
                         { 
-                            caughtList.map( (poke, index) => {                            
-                                console.log(`List item: ${JSON.stringify(poke)}`);
-                                <li key={index}> <ListItem url={poke.url} caught={true} catchHandler={catchHandler}/> </li>
-                            })
+                            caughtList.map( (caughtPoke, index) =>                            
+                                
+                                // console.log(`List item: ${JSON.stringify(caughtPoke)}`);
+                                // const poke = pokeList.find(poke => poke.name == caughtPoke);
+                                
+                                <li key={index}> 
+                                    <p>{caughtPoke.name}</p>
+                                    <img src={caughtPoke.sprite} alt={`Sprite of ${caughtPoke.name}`}/>
+                                    <CaughtStatus name={caughtPoke.name} caught={true} toggleHandler={catchHandler} /> 
+                                </li>
+                            )
                         }
                     </ul>
                 :
