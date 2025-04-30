@@ -68,11 +68,6 @@ function Home (){
         // Get the info for each pokemon
         const promiseList = pokeURLs.map(pokeURL => fetch(pokeURL));
 
-        // await Promise.allSettled(promiseList)
-        // .then(responses => Promise.allSettled( responses.map(response => response.value.json())))
-        // .then(data => setPokemon([...pokemon, ...data]))
-        // .catch(error => console.log(`Error fetching pokemon info: ${error}`));
-
         await Promise.allSettled(promiseList)
         .then(responses => Promise.allSettled( responses.map(response => response.value.json())))
         .then(data => data.map(poke => pokeList.push(poke.value)))
@@ -91,10 +86,25 @@ function Home (){
     function toggleCaughtHandler(pokeName){  
         const selected = pokemon.find(poke => poke.name == pokeName);
         const caught = caughtList.filter(poke => poke.name == pokeName);
+        const tempList = [...caughtList];
 
-        caught[0] ?
-        setCaughtList( caughtList.filter(caughtPoke => caughtPoke.name != pokeName) ) :
-        setCaughtList( [...caughtList, {name:selected.name, sprite:selected['sprites']['front_default']}] );
+        if(caught[0])
+            setCaughtList( caughtList.filter(caughtPoke => caughtPoke.name != pokeName) ) 
+        else {
+            tempList.push( {name:selected.name, sprite:selected['sprites']['front_default']} );
+            tempList.sort( (a, b) => {
+                const nameA = a.name.toUpperCase();
+                const nameB = b.name.toUpperCase();
+                if (nameA < nameB) 
+                    return-1;
+                else if (nameA > nameB)
+                    return 1;
+                else
+                    return 0;
+            })
+            console.log(`New caught list: ${JSON.stringify(tempList)}`);
+            setCaughtList( [...tempList] );
+        }
     }
 
     function selectPokeHandler(selected){

@@ -1,4 +1,5 @@
 import CaughtStatus from "../CaughtStatus";
+import './CaughtList.css';
 
 function CaughtList({caughtList, catchHandler}){
 
@@ -17,7 +18,7 @@ function CaughtList({caughtList, catchHandler}){
                                 
                                 <li key={index}> 
                                     <p>{caughtPoke.name}</p>
-                                    <img src={caughtPoke.sprite} alt={`Sprite of ${caughtPoke.name}`}/>
+                                    <img className="sprite" src={caughtPoke.sprite} alt={`Sprite of ${caughtPoke.name}`}/>
                                     <CaughtStatus name={caughtPoke.name} caught={true} toggleHandler={catchHandler} /> 
                                 </li>
                             )
