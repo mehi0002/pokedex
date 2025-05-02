@@ -1,12 +1,12 @@
-import { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState, useEffect} from 'react';
+import { ScrollRestoration } from 'react-router-dom';
+import Navigation from '../components/Navigation';
 import Gallery from '../components/Gallery';
 import PokemonInfo  from '../components/PokemonInfo';
 import CaughtList from '../components/CaughtList';
+import SkipLink from '../components/SkipLink';
 
 function Home (){
-
-    let navigate = useNavigate();
 
     /*** States ***/
     const [pokemonList, setpokemonList] = useState([]);
@@ -27,7 +27,6 @@ function Home (){
     //Save caught list to local storage when updated
     useEffect( () => {
        localStorage.setItem('caught', JSON.stringify(caughtList) );
-       {console.log(`Caught List: ${caughtList}`)}
     }, [caughtList] );
 
     /*** Functions ***/
@@ -75,10 +74,6 @@ function Home (){
 
         setPokemon([...pokemon, ...pokeList])
     }
-
-    function navigateBack(){
-        navigate(-1);
-    }
     
     /*** Handlers ***/
 
@@ -107,48 +102,54 @@ function Home (){
         }
     }
 
+    //Display pokemon when card is clicked
     function selectPokeHandler(selected){
         const newPoke = pokemon.find(poke => poke.name == selected);
         setSelectedPoke({...newPoke});
-
-        // navigate('#pokeInfo');
     }
 
     /*** Build ***/
     return (
-        <main id="siteContent" className="container-fluid">
-            <h1>Pokedex</h1>
-            
-            {/* {console.log(`Pokemon List: ${JSON.stringify(pokemonList)}`)} */}
-            {/* {console.log(`Pokemon: ${JSON.stringify(pokemon)}`)} */}
-            {/* {console.log(`Selected Pokemon: ${JSON.stringify(selectedPoke)}`)}  */}
-            
-            { selectedPoke &&
-                <aside id="pokeInfo" className="card tablet" >
-                        <PokemonInfo  
-                            poke = {selectedPoke}
-                        />
-                    {/* <button role="link" className="skipLink" onClick={navigateBack} >Back</button> */}
-                </aside>
-            }
+        <>
+            <header> 
+                <h1>Pokedex</h1> 
+                <Navigation />
+            </header>
 
-            { pokemon[0] ?
-                <>
-                    <CaughtList caughtList={caughtList} catchHandler={toggleCaughtHandler} />
-                    <Gallery 
-                        pokemonList={pokemon} 
-                        caught={caughtList}
-                        catchHandler={toggleCaughtHandler}
-                        selectPokeHandler = {selectPokeHandler}
-                    /> 
-                    {/* <button onClick={fetchPokeList}>Load More</button> */}
-                    <button onClick={fetchPokemon}>Load More</button>
+            <main id="siteContent" className="container-fluid">
+                
+                {/* {console.log(`Pokemon List: ${JSON.stringify(pokemonList)}`)} */}
+                {/* {console.log(`Pokemon: ${JSON.stringify(pokemon)}`)} */}
+                {/* {console.log(`Selected Pokemon: ${JSON.stringify(selectedPoke)}`)}  */}
+                
+                { selectedPoke &&
+                    <aside id="pokeInfo" className="card tablet" >
+                            <PokemonInfo  
+                                poke = {selectedPoke}
+                            />
+                        {/* <button role="link" className="skipLink" onClick={navigateBack} >Back</button> */}
+                    </aside>
+                }
 
-                </>
-                :
-                <p>loading...</p>
-            }
-        </main>
+                { pokemon[0] ?
+                    <>
+                        <CaughtList caughtList={caughtList} catchHandler={toggleCaughtHandler} />
+                        <Gallery 
+                            pokemonList={pokemon} 
+                            caught={caughtList}
+                            catchHandler={toggleCaughtHandler}
+                            selectPokeHandler = {selectPokeHandler}
+                        /> 
+                        {/* <button onClick={fetchPokeList}>Load More</button> */}
+                        <button onClick={fetchPokemon}>Load More</button>
+
+                    </>
+                    :
+                    <p>loading...</p>
+                }
+            </main>
+        </>
+
       );
 }
 

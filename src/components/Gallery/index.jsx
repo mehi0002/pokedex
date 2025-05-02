@@ -10,7 +10,6 @@ function Gallery({pokemonList, caught, catchHandler, selectPokeHandler}) {
   return (
     <div id='pokemonGallery'>
       <ul>
-        {console.log(`Pokemon Gallery: ${pokemonList}`)}
         { pokemonList.map( (poke, index) => 
           <li key={index+1}>
             <PokemonCard 

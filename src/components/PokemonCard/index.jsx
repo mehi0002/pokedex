@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import ListItem from '../ListItem';
 import CaughtStatus from '../CaughtStatus';
 import './PokemonCard.css';
@@ -17,16 +17,16 @@ function PokemonCard({name, image, alt, caught, catchHandler, selectHandler}) {
     <article className='card'>
         <>
           {/* Mobile version - opens a new view */}
-          {/* <Link to={`/${name}`} className="cardContent mobile">
-              <p>{name}</p>
-              <img src={image} alt={alt}/>          
-            </Link> */}
-          
-          {/* Tablet version - updates a sidebar */}
-          <button onClick={clickHandler} className="cardContent tablet desktop">
+          <Link to={`/${name}`} className="cardContent mobile">
             <p>{name}</p>
             <img src={image} alt={alt}/>          
-          </button>
+          </Link>
+          
+          {/* Tablet version - updates a sidebar */}
+          {/* <button onClick={clickHandler} className="cardContent tablet desktop">
+            <p>{name}</p>
+            <img src={image} alt={alt}/>          
+          </button> */}
           
           <CaughtStatus name={name} caught={caught} toggleHandler={catchHandler} />
         </>

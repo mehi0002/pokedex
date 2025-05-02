@@ -5,7 +5,6 @@ function CaughtList({caughtList, catchHandler}){
 
     return(
         <article id="caughtList">
-            <header><h2>Caught Pokemon</h2></header>
             <main>
                 { caughtList[0] ?
                     <ul>

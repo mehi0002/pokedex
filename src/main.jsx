@@ -6,13 +6,15 @@ import './index.css';
 import App from './App.jsx';
 import Home from './routes/Home.jsx';
 import Info from './routes/Info.jsx';
+import Caught from './routes/Caught.jsx';
 
 const router = createBrowserRouter([
   { path: '/', 
     element: <App/>,
     children: [
       { path: '/', element: <Home/> },
-      { path: '/:pokeName', element: <Info/>}
+      { path: '/:pokeName', element: <Info/>},
+      { path: '/caught', element: <Caught/>}
     ]
   }
 ]);
