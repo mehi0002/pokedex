@@ -30,6 +30,7 @@
 .cardTitle{
     font-size: 1.25rem;
     text-align: center;
+    margin: 0;
 }
 
 article.card img {
@@ -37,5 +38,4 @@ article.card img {
     height: 100%;
     
     object-fit: contain;
-
 }

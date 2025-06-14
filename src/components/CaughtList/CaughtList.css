@@ -1,5 +1,9 @@
 #caughtList summary{
-    
+    font-size:1.5rem;
+}
+
+#caughtList summary h2{
+    display: inline;
 }
 
 #caughtList ul{

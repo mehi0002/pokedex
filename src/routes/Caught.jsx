@@ -37,14 +37,9 @@ function Caught(){
     return(
 
         <>
-            <header>
-                <SkipLink/>
-                <h1> Caught Pokemon </h1>
-                <Navigation />
-                <BackButton />
-            </header>
-
             <main id="siteContent">
+                <BackButton />
+                <h1> Caught Pokemon </h1>
                 { 
                     caughtList[0] ?
                     < CaughtList caughtList={caughtList} catchHandler={toggleCaughtHandler} /> 

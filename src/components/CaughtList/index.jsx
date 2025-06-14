@@ -5,30 +5,28 @@ import './CaughtList.css';
 function CaughtList({caughtList, catchHandler}){
 
     return(
-        <details id="caughtList">
-            <summary><h2>Caught List <FaChevronDown /></h2></summary>
-                
-                { caughtList[0] ?
-                    <ul>
-                        {/* {console.log(`Caught List: ${caughtList}`)} */}
-                        { 
-                            caughtList.map( (caughtPoke, index) =>                            
-                                
-                                // console.log(`List item: ${JSON.stringify(caughtPoke)}`);
-                                // const poke = pokeList.find(poke => poke.name == caughtPoke);
-                                
-                                <li key={index}> 
-                                    <p>{caughtPoke.name}</p>
-                                    <img className="sprite" src={caughtPoke.sprite} alt={`Sprite of ${caughtPoke.name}`}/>
-                                    <CaughtStatus name={caughtPoke.name} caught={true} toggleHandler={catchHandler} /> 
-                                </li>
-                            )
-                        }
-                    </ul>
-                :
-                    <p>no pokemon caught!</p>
-                }
-        </details>
+        <>               
+            { caughtList[0] ?
+                <ul>
+                    {/* {console.log(`Caught List: ${caughtList}`)} */}
+                    { 
+                        caughtList.map( (caughtPoke, index) =>                            
+                            
+                            // console.log(`List item: ${JSON.stringify(caughtPoke)}`);
+                            // const poke = pokeList.find(poke => poke.name == caughtPoke);
+                            
+                            <li key={index}> 
+                                <p>{caughtPoke.name}</p>
+                                <img className="sprite" src={caughtPoke.sprite} alt={`Sprite of ${caughtPoke.name}`}/>
+                                <CaughtStatus name={caughtPoke.name} caught={true} toggleHandler={catchHandler} /> 
+                            </li>
+                        )
+                    }
+                </ul>
+            :
+                <p>no pokemon caught!</p>
+            }
+        </>
     );
 }
 export default CaughtList;

@@ -25,13 +25,8 @@ function Info(){
 
     return(
         <>
-            <header>
-                <SkipLink/>
-                <Navigation />
-                <BackButton />
-            </header>
-
             <main id="siteContent">
+                <BackButton />
                 { poke.id ?
                     <PokemonInfo poke={poke} />
                 :

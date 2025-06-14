@@ -106,13 +106,10 @@ function Home (){
     /*** Build ***/
     return (
         <>
-            <header> 
-                <h1>Pokedex</h1> 
-                <Navigation/>
-            </header>
 
             <main id="siteContent">
               
+                {/* Pokemon info display */}
                 { selectedPoke &&
                     <aside id="pokeInfo" className="card" >
                             <PokemonInfo  
@@ -124,9 +121,15 @@ function Home (){
 
                 { pokemon[0] ?
                     <>
+                        {/* Caught List */}
                         <aside id="caughtList">
-                            <CaughtList caughtList={caughtList} catchHandler={toggleCaughtHandler} />
+                            <details id="caughtList">
+                                <summary><h2>Caught List</h2></summary>
+                                <CaughtList caughtList={caughtList} catchHandler={toggleCaughtHandler} />
+                            </details>
                         </aside>
+
+                        {/* Pokemon List */}
                         <Gallery 
                             pokemonList={pokemon} 
                             caught={caughtList}
