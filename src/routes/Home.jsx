@@ -37,16 +37,7 @@ function Home (){
         return( useState( obj ? JSON.parse(obj) : defaultValue));
       }
 
-    // Fetch the next list of pokemon from the PokeAPI
-    function fetchPokeList(){
-        fetch(url)
-        .then(response => response.json())
-        .then(json => {
-            setpokemonList([...pokemonList, ...json.results]); 
-            setURL(json.next);
-        } );
-    }
-
+    // Fetch the next set of pokemon and their info from the PokeAPI
     async function fetchPokemon(){
         const listResults = [];
         const pokeURLs = [];
@@ -72,6 +63,7 @@ function Home (){
         .then(data => data.map(poke => pokeList.push(poke.value)))
         .catch(error => console.log(`Error fetching pokemon info: ${error}`));
 
+        // Add to the current list
         setPokemon([...pokemon, ...pokeList])
     }
     
@@ -80,11 +72,14 @@ function Home (){
     // Toggles the caught status and updates the pokemon state
     function toggleCaughtHandler(pokeName){  
         const selected = pokemon.find(poke => poke.name == pokeName);
-        const caught = caughtList.filter(poke => poke.name == pokeName);
+        const caught = caughtList.find(poke => poke.name == pokeName);
         const tempList = [...caughtList];
 
-        if(caught[0])
+        // If already caught, remove from caught list
+        if(caught)
             setCaughtList( caughtList.filter(caughtPoke => caughtPoke.name != pokeName) ) 
+        
+        // If not yet caught, add the pokemon name & sprite url to the caught list
         else {
             tempList.push( {name:selected.name, sprite:selected['sprites']['front_default']} );
             tempList.sort( (a, b) => {
@@ -97,7 +92,7 @@ function Home (){
                 else
                     return 0;
             })
-            console.log(`New caught list: ${JSON.stringify(tempList)}`);
+
             setCaughtList( [...tempList] );
         }
     }
@@ -113,17 +108,13 @@ function Home (){
         <>
             <header> 
                 <h1>Pokedex</h1> 
-                <Navigation />
+                <Navigation/>
             </header>
 
-            <main id="siteContent" className="container-fluid">
-                
-                {/* {console.log(`Pokemon List: ${JSON.stringify(pokemonList)}`)} */}
-                {/* {console.log(`Pokemon: ${JSON.stringify(pokemon)}`)} */}
-                {/* {console.log(`Selected Pokemon: ${JSON.stringify(selectedPoke)}`)}  */}
-                
+            <main id="siteContent">
+              
                 { selectedPoke &&
-                    <aside id="pokeInfo" className="card tablet" >
+                    <aside id="pokeInfo" className="card" >
                             <PokemonInfo  
                                 poke = {selectedPoke}
                             />
@@ -133,7 +124,9 @@ function Home (){
 
                 { pokemon[0] ?
                     <>
-                        <CaughtList caughtList={caughtList} catchHandler={toggleCaughtHandler} />
+                        <aside id="caughtList">
+                            <CaughtList caughtList={caughtList} catchHandler={toggleCaughtHandler} />
+                        </aside>
                         <Gallery 
                             pokemonList={pokemon} 
                             caught={caughtList}

@@ -7,9 +7,7 @@ function CaughtStatus({name, caught, toggleHandler}) {
   name ? pokeName = name : pokeName = 'this pokemon';
 
   /**** Handlers *******/
-  function clickHandler(e){
-    console.log(`toggling caught status from ${caught} to ${!caught}`);
-    e.preventDefault();
+  function clickHandler(){
     toggleHandler(name);
   }
 

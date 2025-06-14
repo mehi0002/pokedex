@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { RxHamburgerMenu } from "react-icons/rx";
+import "./Navigation.css";
 
 function Navigation (){
 
@@ -15,7 +16,7 @@ function Navigation (){
     /*** Build ***/
 
     return(
-        <div id="site-nav">
+        <div id="siteNav">
             <button 
                 aria-label="Open navigation menu" 
                 onClick={toggleNav}
@@ -23,7 +24,7 @@ function Navigation (){
                 <RxHamburgerMenu aria-hidden={true}/>
             </button>
 
-            <nav className={navOpen ? "" : "hidden"}>
+            <nav className={`${navOpen ? "" : "hidden"} overlay`}>
                 <ul>
                     <li>
                         <NavLink 

@@ -18,7 +18,7 @@ function PokemonCard({name, image, alt, caught, catchHandler, selectHandler}) {
         <>
           {/* Mobile version - opens a new view */}
           <Link to={`/${name}`} className="cardContent mobile">
-            <p>{name}</p>
+            <h3 class="cardTitle">{name}</h3>
             <img src={image} alt={alt}/>          
           </Link>
           

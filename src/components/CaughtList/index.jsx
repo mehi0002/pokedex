@@ -1,11 +1,13 @@
 import CaughtStatus from "../CaughtStatus";
+import { FaChevronDown } from "react-icons/fa";
 import './CaughtList.css';
 
 function CaughtList({caughtList, catchHandler}){
 
     return(
-        <article id="caughtList">
-            <main>
+        <details id="caughtList">
+            <summary><h2>Caught List <FaChevronDown /></h2></summary>
+                
                 { caughtList[0] ?
                     <ul>
                         {/* {console.log(`Caught List: ${caughtList}`)} */}
@@ -26,8 +28,7 @@ function CaughtList({caughtList, catchHandler}){
                 :
                     <p>no pokemon caught!</p>
                 }
-            </main>
-        </article>
+        </details>
     );
 }
 export default CaughtList;
