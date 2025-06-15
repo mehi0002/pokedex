@@ -25,7 +25,7 @@ function Info(){
 
     return(
         <>
-            <main id="siteContent">
+            <main id="infoContent">
                 <BackButton />
                 { poke.id ?
                     <PokemonInfo poke={poke} />

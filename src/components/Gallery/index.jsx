@@ -8,8 +8,7 @@ function Gallery({pokemonList, caught, catchHandler, selectPokeHandler}) {
 
   /**** Build *****/
   return (
-    <div id='pokemonGallery'>
-      <ul>
+      <ul id='pokemonGallery'>
         { pokemonList.map( (poke, index) => 
           <li key={index+1}>
             <PokemonCard 
@@ -23,7 +22,6 @@ function Gallery({pokemonList, caught, catchHandler, selectPokeHandler}) {
           </li>
         )}
       </ul>
-    </div>
   );
 
 }

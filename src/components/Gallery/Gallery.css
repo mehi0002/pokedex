@@ -1,13 +1,6 @@
 
 #pokemonGallery{
-    width: fit-content;
-    display: flex;
-    flex-direction: column;
-}
-
-#pokemonGallery ul{
     display: grid;
-    grid-template-columns: 1fr;
     gap: 1rem;
     width:fit-content;
     padding: 0;
@@ -16,4 +9,5 @@
 #pokemonGallery ul li {
     list-style: none;
 }
+
 

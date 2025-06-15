@@ -3,11 +3,13 @@ import { Outlet} from "react-router-dom";
 function App() {
   return(
     <>
-    <header> 
-        <h1>Pokedex</h1> 
-    </header>
+    <div id="siteContainer">
+      <header> 
+          <h1>Pokedex</h1> 
+      </header>
 
-      <Outlet></Outlet>
+        <Outlet></Outlet>
+    </div>
     </>
   )
 }

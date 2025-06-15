@@ -63,6 +63,7 @@ body{
 
 h1{
     font-size: 2.5rem;
+    margin-top: 2rem;
 }
 
 h2{
@@ -70,8 +71,14 @@ h2{
 }
 
 h3{
+    font-size: 1rem;
     font-weight: bold;
     text-transform:capitalize;
+}
+
+a{
+    text-decoration: none;
+    color: var(--colour-dark);
 }
 
 /******* Components **********/
@@ -80,3 +87,101 @@ h3{
     border: 1px solid black;
     border-radius: 1rem;
 }
+
+/******************* LAYOUTS ***********************/
+
+#siteContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+}
+
+#homeContent{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 2rem;
+}
+
+#sidebar, #mainContent{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+#sidebar aside{
+    margin-bottom: 1rem;
+}
+
+#pokemonGallery .selection{
+    display: none;
+}
+
+#homeContent #pokeInfo{
+    display: none;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 400px) {
+
+    #pokemonGallery{
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Tablet - portrait */
+@media only screen and (min-width: 400px) {
+
+    #pokemonGallery{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* Tablet Landscape */
+@media only screen and (min-width: 600px) {
+
+    #pokemonGallery{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media only screen and (min-width: 800px) {
+
+    #pokemonGallery{
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}
+
+
+ @media only screen and (min-width: 1200px) {
+
+    #pokemonGallery .selection {
+        display: flex;
+    }
+
+    #pokemonGallery .pageLink {
+        display: none;
+    }
+
+    #homeContent #pokeInfo{
+    display: grid;
+}
+
+    #homeContent{
+        grid-template-areas:
+        'main main side';
+    }
+
+    #homeContent #mainContent{
+        grid-area: main;
+    }
+
+    #homeContent #sidebar{
+        grid-area: side;
+    }
+       
+} 

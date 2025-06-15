@@ -37,7 +37,7 @@ function Caught(){
     return(
 
         <>
-            <main id="siteContent">
+            <main id="caughtContent">
                 <BackButton />
                 <h1> Caught Pokemon </h1>
                 { 

@@ -1,10 +1,8 @@
 import { useState, useEffect} from 'react';
-import { ScrollRestoration } from 'react-router-dom';
-import Navigation from '../components/Navigation';
+// import { ScrollRestoration } from 'react-router-dom';
 import Gallery from '../components/Gallery';
 import PokemonInfo  from '../components/PokemonInfo';
 import CaughtList from '../components/CaughtList';
-import SkipLink from '../components/SkipLink';
 
 function Home (){
 
@@ -19,7 +17,6 @@ function Home (){
 
     // Fetch first 20 pokemon on load
     useEffect(() => { 
-        // fetchPokeList(); 
         fetchPokemon();
         
     }, [] );
@@ -106,29 +103,34 @@ function Home (){
     /*** Build ***/
     return (
         <>
+            <div id="homeContent">
 
-            <main id="siteContent">
-              
-                {/* Pokemon info display */}
-                { selectedPoke &&
-                    <aside id="pokeInfo" className="card" >
-                            <PokemonInfo  
-                                poke = {selectedPoke}
-                            />
-                        {/* <button role="link" className="skipLink" onClick={navigateBack} >Back</button> */}
-                    </aside>
-                }
+                <div id="sidebar">
+                    {/* Pokemon info display */}
+                    { selectedPoke &&
+                        <aside id="pokeInfo" className="card" >
+                                <PokemonInfo  
+                                    poke = {selectedPoke}
+                                />
+                            {/* <button role="link" className="skipLink" onClick={navigateBack} >Back</button> */}
+                        </aside>
+                    }
+
+                    {/* Caught List */}
+                    { pokemon[0] ?
+                            <aside id="caughtList">
+                                <details id="caughtList">
+                                    <summary><h2>Caught List</h2></summary>
+                                    <CaughtList caughtList={caughtList} catchHandler={toggleCaughtHandler} />
+                                </details>
+                            </aside>
+                        :
+                        <p>loading...</p>
+                    }
+                </div>
 
                 { pokemon[0] ?
-                    <>
-                        {/* Caught List */}
-                        <aside id="caughtList">
-                            <details id="caughtList">
-                                <summary><h2>Caught List</h2></summary>
-                                <CaughtList caughtList={caughtList} catchHandler={toggleCaughtHandler} />
-                            </details>
-                        </aside>
-
+                    <main id="mainContent">
                         {/* Pokemon List */}
                         <Gallery 
                             pokemonList={pokemon} 
@@ -136,14 +138,12 @@ function Home (){
                             catchHandler={toggleCaughtHandler}
                             selectPokeHandler = {selectPokeHandler}
                         /> 
-                        {/* <button onClick={fetchPokeList}>Load More</button> */}
-                        <button onClick={fetchPokemon}>Load More</button>
-
-                    </>
+                        <button id="loadMore" onClick={fetchPokemon}>Load More</button>
+                    </main>
                     :
                     <p>loading...</p>
                 }
-            </main>
+            </div>
         </>
 
       );
