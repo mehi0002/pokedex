@@ -11,27 +11,31 @@ import './PokemonInfo.css';
             <h2>{poke.name}</h2>
             <img src={poke['sprites']['other']['official-artwork']['front_default']} alt={`Official art of ${name}`}/> 
             
-            <section className="details">
+            <section id="pokeDetails">
                 
                 <h3>Type</h3>
-                <Type> {poke.types[0].type.name} </Type>            {/* Type #1 */}            
-                { poke.types[1] && 
-                <Type> {poke.types[1].type.name} </Type>            /* Type #2 */
-                }
+                <ul id="types">
+                    <li className={`type ${poke.types[0].type.name}`}>{poke.types[0].type.name}</li>
+                    { poke.types[1] &&
+                        <li className={`type ${poke.types[1].type.name}`}>{poke.types[1].type.name}</li>
+                    }
+                </ul>
                 
                 <h3>Characteristics</h3>
-                <p>{`Height: ${poke.height}`}</p>                   {/* Height */}
-                <p>{`Weight: ${poke.weight}`}</p>                   {/* Weight */}
-                <p>{`Base XP: ${poke.base_experience}`}</p>         {/* Base XP */}
+                <ul id="characteristics">
+                    <li>{`Height: ${poke.height}`}</li>                   {/* Height */}
+                    <li>{`Weight: ${poke.weight}`}</li>                   {/* Weight */}
+                    <li>{`Base XP: ${poke.base_experience}`}</li>         {/* Base XP */}
+                </ul>
             </section>
     
             <section className='stats'>
                 <h3>Stats</h3>
-                <ul>                                                {/* Base stats */}
+                <ul id="stats">                                                {/* Base stats */}
                 {
                     poke.stats.map( (stat, index) =>
                     <li key={index}>
-                        <StatMeter pokeName={name} statName={stat.stat.name} base={stat.base_stat} />
+                        <StatMeter pokeName={poke.name} statName={stat.stat.name} base={stat.base_stat} />
                     </li>
                     )
                 }

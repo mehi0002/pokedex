@@ -129,6 +129,7 @@ function Home (){
                     }
                 </div>
 
+                {/* Main Gallery */}
                 { pokemon[0] ?
                     <main id="mainContent">
                         {/* Pokemon List */}

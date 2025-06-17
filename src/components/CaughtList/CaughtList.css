@@ -6,10 +6,6 @@
     display: inline;
 }
 
-#caughtList ul{
-    padding: 0;
-}
-
 #caughtList li{
     display: flex;
     flex-direction: row-reverse;

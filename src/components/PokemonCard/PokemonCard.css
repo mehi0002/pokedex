@@ -9,8 +9,8 @@
 
 .status{
     z-index: 1;
-    width: 2rem;
-    height: 2rem;
+    /* width: 2rem;
+    height: 2rem; */
     grid-row: 1 / span 1;
     grid-column: 1 / span 1;
 }
