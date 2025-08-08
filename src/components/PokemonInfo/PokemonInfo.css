@@ -1,9 +1,3 @@
-#pokeInfo{
-    position: fixed;
-    top: 12.5rem;
-    width: 22rem;
-}
-
 .pokeInfo{
     width: 100%;
     display: flex;
