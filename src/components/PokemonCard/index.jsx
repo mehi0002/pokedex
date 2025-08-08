@@ -14,7 +14,7 @@ function PokemonCard({name, image, alt, caught, catchHandler, selectHandler}) {
   /***** Build *****/
 
   return (
-    <article className='card'>
+    <article className='card container'>
         <>
           {/* Mobile version - opens a new view */}
           <Link to={`/${name}`} className="cardContent pageLink">

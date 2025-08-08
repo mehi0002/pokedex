@@ -3,3 +3,7 @@ button.status{
     background: transparent;
     border: none;
 }
+
+button.status img{
+    width: 2rem;
+}

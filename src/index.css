@@ -56,6 +56,9 @@ table {
 }
 
 /****** Base Styles *******/
+*{
+    box-sizing: border-box;
+}
 body{
     background-color: var(--colour-light);
     color: var(--colour-dark);
@@ -68,6 +71,8 @@ h1{
 
 h2{
     font-size: 1.5rem;
+    font-weight: bold;
+    text-transform:capitalize;
 }
 
 h3{
@@ -82,13 +87,23 @@ a{
 }
 
 /******* Components **********/
-.container, article, aside{
+.container{
     padding: 1rem;
     border: 1px solid black;
     border-radius: 1rem;
 }
 
 /******************* LAYOUTS ***********************/
+
+#siteHeader{
+    position: sticky;
+    top: 0;
+    padding-bottom: 1rem;
+    width: 100%;
+    text-align: center;
+    z-index: 2;
+    background-color: white;
+}
 
 #siteContainer {
         display: flex;
@@ -119,14 +134,6 @@ a{
 
 #caughtList{
     min-width: 17rem;
-}
-
-#caughtList ul{
-    display: grid;
-    grid-template-columns: 1fr;
-    max-height: 25rem;
-    overflow-y: scroll;
-    overflow-x: hidden;
 }
 
 #pokemonGallery .selection{
@@ -193,7 +200,8 @@ a{
 
     #homeContent{
         grid-template-areas:
-        'main main side';
+        'main side';
+        grid-template-columns: 65% 35%;
     }
 
     #homeContent #mainContent{

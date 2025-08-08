@@ -106,20 +106,10 @@ function Home (){
             <div id="homeContent">
 
                 <div id="sidebar">
-                    {/* Pokemon info display */}
-                    { selectedPoke &&
-                        <aside id="pokeInfo" className="card" >
-                                <PokemonInfo  
-                                    poke = {selectedPoke}
-                                />
-                            {/* <button role="link" className="skipLink" onClick={navigateBack} >Back</button> */}
-                        </aside>
-                    }
-
                     {/* Caught List */}
                     { pokemon[0] ?
-                            <aside id="caughtList">
-                                <details id="caughtList">
+                            <aside id="caughtList" className="container">
+                                <details>
                                     <summary><h2>Caught List</h2></summary>
                                     <CaughtList caughtList={caughtList} catchHandler={toggleCaughtHandler} />
                                 </details>
@@ -127,6 +117,17 @@ function Home (){
                         :
                         <p>loading...</p>
                     }
+
+                    {/* Pokemon info display */}
+                    { selectedPoke &&
+                        <aside id="pokeInfo" >
+                                <PokemonInfo  
+                                    poke = {selectedPoke}
+                                />
+                            {/* <button role="link" className="skipLink" onClick={navigateBack} >Back</button> */}
+                        </aside>
+                    }
+
                 </div>
 
                 {/* Main Gallery */}

@@ -1,5 +1,109 @@
-button{
-    padding: 0;
-    background: transparent;
-    border: none;
+#pokeInfo{
+    position: fixed;
+    top: 12.5rem;
+    width: 22rem;
+}
+
+.pokeInfo{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center
+    ;
+    border: 1px solid black;
+    border-radius: 1rem;
+
+}
+
+.pokeInfo h2{
+    text-align: center;
+}
+
+/* Pokemon Card */
+.pokeInfo .card{
+    border-bottom: 2px solid black;
+    padding: 0 0 1rem 0;
+
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+
+    width: 100%;
+}
+
+.pokeInfo .card img{
+    max-height: 12rem;
+    width: fit-content;
+}
+
+/* Info section */
+.details{
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+
+/* Type and Characteristics */
+
+.details .detailsSidebar{
+    display: flex;
+    flex-direction: column;
+}
+
+.types, .characteristics{
+    display: grid;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.type{
+    padding: 0.25rem;
+    border: 1px solid black;
+    width: fit-content;
+    border-radius: 0.25rem;
+}
+
+.characteristics li{
+    text-wrap: nowrap;
+}
+
+.characteristics .charName{
+    width: 4.5rem;
+    display: inline-block;
+}
+
+/* Base Stat Meters */
+.stats{
+    display: grid;
+    gap: 0.5rem;
+    flex-grow: 1;
+    padding-right: 1rem;
+}
+
+.stats li{
+    display: flex;
+    align-items: flex-start;
+}
+
+.stats .statName{
+    text-transform: capitalize;
+    width: 7rem;
+    display: inline-block;
+    text-wrap: wrap;
+}
+
+.stats .statVal{
+    flex-grow: 1;
+    background: none;
+    border: 1px solid black;
+    border-radius: 0.25rem;
+}
+
+meter::-webkit-meter-optimum-value {
+  background: black;
+}
+meter::-moz-meter-bar { /* Firefox Pseudo Class */
+  background: black;
 }

@@ -4,7 +4,7 @@ function App() {
   return(
     <>
     <div id="siteContainer">
-      <header> 
+      <header id="siteHeader"> 
           <h1>Pokedex</h1> 
       </header>
 

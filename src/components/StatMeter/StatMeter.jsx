@@ -5,8 +5,13 @@ function StatMeter(props) {
 
   return (
     <>
-      <label htmlFor={`${props.pokeName}_${props.statName}`}> {props.statName} </label>
-      <meter min='0' max='255' value={props.base}></meter>
+      <label 
+        htmlFor={`${props.pokeName}_${props.statName}`}
+        className="statName"
+      > 
+        {props.statName} 
+      </label>
+      <meter className="statVal" min='0' max='255' value={props.base}></meter>
     </>
   );
 }
