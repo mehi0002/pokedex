@@ -98,6 +98,8 @@ function Home (){
     function selectPokeHandler(selected){
         const newPoke = pokemon.find(poke => poke.name == selected);
         setSelectedPoke({...newPoke});
+
+        document.getElementById("caughtList").firstElementChild.removeAttribute("open");
     }
 
     /*** Build ***/
