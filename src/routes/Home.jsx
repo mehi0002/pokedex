@@ -142,7 +142,7 @@ function Home (){
                             catchHandler={toggleCaughtHandler}
                             selectPokeHandler = {selectPokeHandler}
                         /> 
-                        <button id="loadMore" onClick={fetchPokemon}>Load More</button>
+                        <button id="loadMore" className="container" aria-label="load more pokemon" onClick={fetchPokemon}>Load More</button>
                     </main>
                     :
                     <p>loading...</p>
