@@ -17,12 +17,12 @@ function PokemonCard({name, image, alt, caught, catchHandler, selectHandler}) {
     <article className='card container'>
         <>
           {/* Mobile version - opens a new view */}
-          <Link to={`/${name}`} className="cardContent pageLink">
+          {/* <Link to={`/${name}`} className="cardContent pageLink">
             <h3 className="cardTitle">{name}</h3>
             <img src={image} alt={alt}/>          
-          </Link>
+          </Link> */}
           
-          {/* Tablet version - updates a sidebar */}
+          {/* Desktop version - updates a sidebar */}
           <button onClick={clickHandler} className="cardContent selection">
             <h3 className="cardTitle">{name}</h3>
             <img src={image} alt={alt}/>          

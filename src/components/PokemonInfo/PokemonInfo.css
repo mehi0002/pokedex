@@ -1,11 +1,14 @@
 .pokeInfo{
-    width: 100%;
+    width: auto;
+    max-width: 22rem;
+    
     display: flex;
     flex-direction: column;
-    align-items: center
-    ;
+    align-items: center;
+
     border: 1px solid black;
     border-radius: 1rem;
+    background-color: white;
 
 }
 
@@ -35,7 +38,7 @@
     width: 100%;
     padding: 1rem;
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: column;
     justify-content: space-between;
 }
 
@@ -100,4 +103,19 @@ meter::-webkit-meter-optimum-value {
 }
 meter::-moz-meter-bar { /* Firefox Pseudo Class */
   background: black;
+}
+
+#closePokeInfo{
+    margin: 0.5rem;
+}
+
+@media only screen and (min-width: 400px) {
+    .pokeInfo{
+        width: 100%;
+        max-width: 22rem;
+    }
+
+    .details{
+        flex-direction: row-reverse;
+    }
 }

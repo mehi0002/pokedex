@@ -6,14 +6,14 @@ import CaughtList from '../components/CaughtList';
 
 function Home (){
 
-    /*** States ***/
+    /****** States ******/
     const [pokemonList, setpokemonList] = useState([]);
     const [url, setURL] = useState('https://pokeapi.co/api/v2/pokemon');
     const [pokemon, setPokemon] = useState([]);
     const [caughtList, setCaughtList] = useLocalStorage('caught', []);
     const [selectedPoke, setSelectedPoke] = useState('');
 
-    /*** Effects ***/
+    /****** Effects ******/
 
     // Fetch first 20 pokemon on load
     useEffect(() => { 
@@ -26,7 +26,7 @@ function Home (){
        localStorage.setItem('caught', JSON.stringify(caughtList) );
     }, [caughtList] );
 
-    /*** Functions ***/
+    /****** Functions ******/
 
     // Initialize state with local storage
     function useLocalStorage(key, defaultValue){
@@ -63,8 +63,12 @@ function Home (){
         // Add to the current list
         setPokemon([...pokemon, ...pokeList])
     }
+
+    function closePokeInfo(){
+        document.getElementById("pokeInfo").classList.remove("view");
+    }
     
-    /*** Handlers ***/
+    /****** Handlers *******/
 
     // Toggles the caught status and updates the pokemon state
     function toggleCaughtHandler(pokeName){  
@@ -100,6 +104,7 @@ function Home (){
         setSelectedPoke({...newPoke});
 
         document.getElementById("caughtList").firstElementChild.removeAttribute("open");
+        document.getElementById("pokeInfo").classList.add("view");
     }
 
     /*** Build ***/
@@ -121,14 +126,15 @@ function Home (){
                     }
 
                     {/* Pokemon info display */}
-                    { selectedPoke &&
-                        <aside id="pokeInfo" >
-                                <PokemonInfo  
-                                    poke = {selectedPoke}
-                                />
-                            {/* <button role="link" className="skipLink" onClick={navigateBack} >Back</button> */}
-                        </aside>
-                    }
+                    <aside id="pokeInfo">
+                        { selectedPoke &&
+                            <>
+                                <PokemonInfo poke = {selectedPoke} />
+                                <button id="closePokeInfo" aria-label="close" onClick={closePokeInfo}>X</button>
+                                {/* <button role="link" className="skipLink" onClick={navigateBack} >Back</button> */}
+                            </>
+                        }
+                    </aside>
 
                 </div>
 
