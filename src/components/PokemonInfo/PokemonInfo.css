@@ -1,3 +1,4 @@
+/*** Container ***/
 .pokeInfo{
     width: auto;
     max-width: 22rem;
@@ -9,14 +10,13 @@
     border: 1px solid black;
     border-radius: 1rem;
     background-color: white;
-
 }
 
 .pokeInfo h2{
     text-align: center;
 }
 
-/* Pokemon Card */
+/*** Pokemon Card ***/
 .pokeInfo .card{
     border-bottom: 2px solid black;
     padding: 0 0 1rem 0;
@@ -33,7 +33,7 @@
     width: fit-content;
 }
 
-/* Info section */
+/*** Info section ***/
 .details{
     width: 100%;
     padding: 1rem;
@@ -42,7 +42,7 @@
     justify-content: space-between;
 }
 
-/* Type and Characteristics */
+/*** Type and Characteristics ***/
 
 .details .detailsSidebar{
     display: flex;
@@ -71,7 +71,7 @@
     display: inline-block;
 }
 
-/* Base Stat Meters */
+/*** Base Stat Meters ***/
 .stats{
     display: grid;
     gap: 0.5rem;
@@ -105,11 +105,13 @@ meter::-moz-meter-bar { /* Firefox Pseudo Class */
   background: black;
 }
 
+/*** Close Button ***/
 #closePokeInfo{
     margin: 0.5rem;
 }
 
-@media only screen and (min-width: 400px) {
+/*** Un-collapse on larger screens ***/
+@media only screen and (min-width: 450px) {
     .pokeInfo{
         width: 100%;
         max-width: 22rem;

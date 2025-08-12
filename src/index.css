@@ -1,4 +1,4 @@
-/******* CSS RESET *******/
+/******************************* CSS RESET *************************************/
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -60,26 +60,34 @@ table {
 *{
     box-sizing: border-box;
 }
+
+html{
+    font-size: 16px;
+}
+
 body{
     background-color: var(--colour-light);
     color: var(--colour-dark);
+    font-family: "Genos", sans-serif;
 }
 
 h1{
-    font-size: 2.5rem;
+    font-size: 3rem;
     margin-top: 2rem;
 }
 
 h2{
-    font-size: 1.5rem;
-    font-weight: bold;
+    font-size: 2rem;
     text-transform:capitalize;
 }
 
 h3{
-    font-size: 1rem;
-    font-weight: bold;
+    font-size: 2rem;
     text-transform:capitalize;
+}
+
+p{
+    font-size: 2rem;
 }
 
 a{
@@ -88,6 +96,7 @@ a{
 }
 
 button{
+    font-family: "Genos", sans-serif;
     font-size: 1.5rem;
 }
 
@@ -111,20 +120,17 @@ button{
 }
 
 #siteHeader{
-    /* position: sticky;
-    top: 0; */
-    padding-bottom: 1rem;
     width: 100%;
-    text-align: center;
     z-index: 2;
+
+    padding-bottom: 1rem;
+    text-align: center;
     background-color: white;
 }
 
 #homeContent{
     display: grid;
     grid-template-columns: 1fr;
-    /* gap: 1rem; */
-    /* padding: 2rem; */
 }
 
 #sidebar, #mainContent{
@@ -141,13 +147,9 @@ button{
     position: sticky;
     top: 0;
     z-index: 2;
-    padding: 0.5rem 1rem;
+    padding: 1rem;
     background: white;
 }
-
-/* #sidebar aside{
-    margin-bottom: 1rem;
-} */
 
 #caughtList{
     min-width: 17rem;
@@ -163,19 +165,17 @@ button{
 }
 
 #pokemonGallery .selection{
-    /* display: none; */
     display: flex;
 }
 
 #pokeInfo{
-    /* display: none; */
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     justify-content: center;
 
     position: absolute;
-    top: 4.5rem;
+    top: 6rem;
     left: -25rem;
     z-index: 2;
 
@@ -192,7 +192,7 @@ button{
     margin: 1rem 0;
 }
 
-/* Extra small devices (phones, 600px and down) */
+/*** Extra small devices (phones, 600px and down) ***/
 @media only screen and (max-width: 400px) {
 
     #pokemonGallery{
@@ -200,15 +200,20 @@ button{
     }
 }
 
-/* Tablet - portrait */
+/*** Tablet - portrait ***/
 @media only screen and (min-width: 400px) {
+    
+    h3, p{
+        font-size: 1.5rem;
+    }
 
     #pokemonGallery{
         grid-template-columns: 1fr 1fr;
     }
+
 }
 
-/* Tablet Landscape */
+/*** Tablet Landscape ***/
 @media only screen and (min-width: 600px) {
 
     #pokemonGallery{
@@ -231,9 +236,16 @@ button{
     }
 }
 
-/* Desktop */
+/*** Desktop ***/
  @media only screen and (min-width: 1100px) {
     
+    h2{
+        font-size: 1.5rem;
+    }
+    h3, p{
+        font-size: 1.25rem;
+    }
+
     #siteHeader{
         position: sticky;
         top: 0;
@@ -246,10 +258,6 @@ button{
     #pokemonGallery .pageLink {
         display: none;
     }
-
-    #homeContent #pokeInfo{
-    display: grid;
-}
 
     #homeContent{
         grid-template-areas:
@@ -282,6 +290,8 @@ button{
     }
 
     #pokeInfo{
+        display: grid;
+
         position: fixed;
         top: 11.5rem;
         left: auto;
