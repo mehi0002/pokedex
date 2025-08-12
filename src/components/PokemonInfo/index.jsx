@@ -6,7 +6,7 @@ import './PokemonInfo.css';
     /*** Build ***/
     return(
 
-        <article className="pokeInfo">
+        <article className="pokeInfo container">
             <section className="card">
                 <h2>{poke.name}</h2>
                 <img src={poke['sprites']['other']['official-artwork']['front_default']} alt={`Official art of ${name}`}/> 
@@ -34,6 +34,7 @@ import './PokemonInfo.css';
                     </ul>
                 </div>
     
+                {/* Base Stat Meters */}
                 <ul aria-label="stats" className='stats'>                                                {/* Base stats */}
                 {
                     poke.stats.map( (stat, index) =>

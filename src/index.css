@@ -52,8 +52,12 @@ table {
 /******* Variables *******/
 :root{
     --colour-primary: #7DB5B1;
-    --colour-light: #FFFFFF;
-    --colour-dark: #3F3F3F;
+    --colour-primary-trans: rgba(125, 181, 177, 0.15);
+    
+    --colour-secondary: rgba(222,236,235,0.95);
+    /* --colour-tertiary: rgba(213, 230, 230, 0.95); */
+    --colour-tertiary: rgba(208, 227, 226, 0.95);
+    --colour-dark: #0D0D0D;
 }
 
 /****** Base Styles *******/
@@ -66,7 +70,7 @@ html{
 }
 
 body{
-    background-color: var(--colour-light);
+    background-color: var(--colour-secondary);
     color: var(--colour-dark);
     font-family: "Genos", sans-serif;
 }
@@ -103,12 +107,14 @@ button{
 /******* Components **********/
 .container{
     padding: 1rem;
-    border: 1px solid black;
+    background-color: var(--colour-primary-trans);
+    border: 1px solid var(--colour-primary);
     border-radius: 0.5rem;
 }
 
 /******************* LAYOUTS ***********************/
 
+/*** Site Containers ***/
 #siteContainer {
         display: flex;
         flex-direction: column;
@@ -125,7 +131,7 @@ button{
 
     padding-bottom: 1rem;
     text-align: center;
-    background-color: white;
+    background-color: var(--colour-secondary);
 }
 
 #homeContent{
@@ -148,12 +154,13 @@ button{
     top: 0;
     z-index: 2;
     padding: 1rem;
-    background: white;
 }
 
+/*** Caught Pokemon List ***/
 #caughtList{
     min-width: 17rem;
-    z-index: 3;
+    z-index: 2;
+    background-color: var(--colour-tertiary);
 }
 
 #caughtList ul{
@@ -164,10 +171,9 @@ button{
     overflow-x: hidden;
 }
 
-#pokemonGallery .selection{
-    display: flex;
-}
+/*** Pokemon Info Card ***/
 
+/*Outer container */
 #pokeInfo{
     display: flex;
     flex-direction: row;
@@ -175,24 +181,45 @@ button{
     justify-content: center;
 
     position: absolute;
-    top: 6rem;
     left: -25rem;
-    z-index: 2;
-
-    background-color: rgba(250,250,250,0.8);
+    z-index: 3;
 }
 
+/* Inner card */
+#pokeInfo .pokeInfo{
+    position: relative;
+    width: auto;
+    max-width: 22rem;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background-color: var(--colour-tertiary);
+}
+
+/* Pop-up (Mobile vesion) */
 #pokeInfo.view{
     width: 100%;
     height: 100dvh;
     left:0;
+    top: 0;
+    background-color: var(--colour-secondary);
 }
 
-#loadMore{
+button#closePokeInfo{
+    position: relative;
+    margin-left: 0.5rem;
+    background-color: var(--colour-tertiary);
+}
+
+/*** Pokemon Gallery ***/
+
+button#loadMore{
     margin: 1rem 0;
 }
 
-/*** Extra small devices (phones, 600px and down) ***/
+/****** Extra small devices (phones, 600px and down) ******/
 @media only screen and (max-width: 400px) {
 
     #pokemonGallery{
@@ -200,7 +227,7 @@ button{
     }
 }
 
-/*** Tablet - portrait ***/
+/****** Tablet - portrait ******/
 @media only screen and (min-width: 400px) {
     
     h3, p{
@@ -213,7 +240,7 @@ button{
 
 }
 
-/*** Tablet Landscape ***/
+/****** Tablet Landscape ******/
 @media only screen and (min-width: 600px) {
 
     #pokemonGallery{
@@ -236,9 +263,11 @@ button{
     }
 }
 
-/*** Desktop ***/
+/****** Desktop ******/
  @media only screen and (min-width: 1100px) {
     
+    /***Fonts ***/
+
     h2{
         font-size: 1.5rem;
     }
@@ -246,23 +275,16 @@ button{
         font-size: 1.25rem;
     }
 
+    /*** Site Containers ***/
     #siteHeader{
         position: sticky;
         top: 0;
     }
 
-    #pokemonGallery .selection {
-        display: flex;
-    }
-
-    #pokemonGallery .pageLink {
-        display: none;
-    }
-
     #homeContent{
         grid-template-areas:
         'main side';
-        grid-template-columns: 65% 35%;
+        grid-template-columns: 70% 30%;
     }
 
     #homeContent #mainContent{
@@ -277,11 +299,13 @@ button{
         padding: 0;
     }
 
+    /*** Caught List ***/
+
     #caughtList{
         position: fixed;
-        top: 6.5rem;
+        top: 7rem;
         width: 22rem;
-        background-color: white;
+        z-index: 3;
     }
 
     #caughtList ul{
@@ -289,22 +313,23 @@ button{
         height: 27rem;
     }
 
-    #pokeInfo{
+    /*** Pokemon Info Card ***/
+    #pokeInfo, #pokeInfo.view{
         display: grid;
 
         position: fixed;
-        top: 11.5rem;
+        top: 12rem;
         left: auto;
         width: 22rem;
+        z-index: 2;
     }
 
-    #pokeInfo.view{
-        width: auto;
-        height: auto;
-        left: auto;
+    #pokeInfo .pokeInfo{
+        position: static;
+        top:auto;
     }
        
-    #closePokeInfo{
+    button#closePokeInfo{
         display: none;
     }
 } 

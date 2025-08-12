@@ -130,7 +130,14 @@ function Home (){
                         { selectedPoke &&
                             <>
                                 <PokemonInfo poke = {selectedPoke} />
-                                <button id="closePokeInfo" aria-label="close" onClick={closePokeInfo}>X</button>
+                                <button 
+                                    id="closePokeInfo" 
+                                    className="container" 
+                                    aria-label="close" 
+                                    onClick={closePokeInfo}
+                                >
+                                    X
+                                </button>
                                 {/* <button role="link" className="skipLink" onClick={navigateBack} >Back</button> */}
                             </>
                         }
@@ -148,7 +155,15 @@ function Home (){
                             catchHandler={toggleCaughtHandler}
                             selectPokeHandler = {selectPokeHandler}
                         /> 
-                        <button id="loadMore" className="container" aria-label="load more pokemon" onClick={fetchPokemon}>Load More</button>
+                        <button 
+                            id="loadMore" 
+                            className="container" 
+                            aria-label="load more pokemon" 
+                            onClick={fetchPokemon}
+                        >
+                            Load More
+                        </button>
+                        
                     </main>
                     :
                     <p>loading...</p>

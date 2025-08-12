@@ -1,24 +1,10 @@
-/*** Container ***/
-.pokeInfo{
-    width: auto;
-    max-width: 22rem;
-    
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    border: 1px solid black;
-    border-radius: 1rem;
-    background-color: white;
-}
-
 .pokeInfo h2{
     text-align: center;
 }
 
 /*** Pokemon Card ***/
 .pokeInfo .card{
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid var(--colour-primary);
     padding: 0 0 1rem 0;
 
     display: flex;
@@ -57,7 +43,7 @@
 
 .type{
     padding: 0.25rem;
-    border: 1px solid black;
+    border: 1px solid var(--colour-primary);
     width: fit-content;
     border-radius: 0.25rem;
 }
@@ -94,20 +80,15 @@
 .stats .statVal{
     flex-grow: 1;
     background: none;
-    border: 1px solid black;
+    border: 1px solid var(--colour-primary);
     border-radius: 0.25rem;
 }
 
 meter::-webkit-meter-optimum-value {
-  background: black;
+  background: var(--colour-primary);
 }
 meter::-moz-meter-bar { /* Firefox Pseudo Class */
-  background: black;
-}
-
-/*** Close Button ***/
-#closePokeInfo{
-    margin: 0.5rem;
+  background: var(--colour-primary);
 }
 
 /*** Un-collapse on larger screens ***/

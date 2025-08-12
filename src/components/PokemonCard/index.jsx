@@ -1,5 +1,3 @@
-import { Link, NavLink } from 'react-router-dom';
-import ListItem from '../ListItem';
 import CaughtStatus from '../CaughtStatus';
 import './PokemonCard.css';
 
@@ -15,21 +13,12 @@ function PokemonCard({name, image, alt, caught, catchHandler, selectHandler}) {
 
   return (
     <article className='card container'>
-        <>
-          {/* Mobile version - opens a new view */}
-          {/* <Link to={`/${name}`} className="cardContent pageLink">
-            <h3 className="cardTitle">{name}</h3>
-            <img src={image} alt={alt}/>          
-          </Link> */}
-          
-          {/* Desktop version - updates a sidebar */}
-          <button onClick={clickHandler} className="cardContent selection">
+          <button onClick={clickHandler} className="cardContent">
             <h3 className="cardTitle">{name}</h3>
             <img src={image} alt={alt}/>          
           </button>
           
           <CaughtStatus name={name} caught={caught} toggleHandler={catchHandler} />
-        </>
     </article>
   );
       
