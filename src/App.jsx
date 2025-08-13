@@ -119,9 +119,9 @@ function App() {
         <div id="sidebar">
           {/* Caught List */}
           { pokemon[0] ?
-            <aside id="caughtList" className="container">
-                <details>
-                    <summary><h2>Caught List</h2></summary>
+            <aside id="caughtList">
+                <details className="container">
+                    <summary className="container interactive"><h2>Caught List</h2></summary>
                     <CaughtList caughtList={caughtList} catchHandler={toggleCaughtHandler} />
                 </details>
             </aside>
@@ -160,7 +160,7 @@ function App() {
             /> 
             <button 
               id="loadMore" 
-              className="container" 
+              className="container interactive" 
               aria-label="load more pokemon" 
               onClick={fetchPokemon}
             >

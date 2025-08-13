@@ -6,6 +6,10 @@
     padding: 0;
 }
 
+#pokemonGallery .card:hover{
+    transform: scale(105%);
+}
+
 #pokemonGallery ul li {
     list-style: none;
 }

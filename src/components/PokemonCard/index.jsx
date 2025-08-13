@@ -2,7 +2,7 @@ import CaughtStatus from '../CaughtStatus';
 import './PokemonCard.css';
 
 // Displays the Pokemon name, image, and caught status.
-function PokemonCard({name, image, alt, caught, catchHandler, selectHandler}) {
+function PokemonCard({name, classes, image, alt, caught, catchHandler, selectHandler}) {
 
   /*** Handlers ***/
   function clickHandler(){
@@ -12,7 +12,7 @@ function PokemonCard({name, image, alt, caught, catchHandler, selectHandler}) {
   /***** Build *****/
 
   return (
-    <article className='card container'>
+    <article className={`card container ${classes}`}>
           <button onClick={clickHandler} className="cardContent">
             <h3 className="cardTitle">{name}</h3>
             <img src={image} alt={alt}/>          

@@ -1,9 +1,18 @@
+#caughtList details{
+    padding: 0;
+}
+
 #caughtList summary{
     font-size:1.5rem;
+    cursor: pointer;
 }
 
 #caughtList summary h2{
     display: inline;
+}
+
+#caughtList ul{
+    padding: 0 1rem 1rem 1rem;
 }
 
 #caughtList li{

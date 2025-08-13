@@ -12,7 +12,8 @@ function Gallery({pokemonList, caught, catchHandler, selectPokeHandler}) {
         { pokemonList.map( (poke, index) => 
           <li key={index+1}>
             <PokemonCard 
-              name = {poke.name} 
+              name = {poke.name}
+              classes = 'interactive' 
               image = {poke['sprites']['other']['official-artwork']['front_default']}
               alt = {`Official art of ${poke.name}`}
               caught={ caught.find(caughtPoke => caughtPoke.name == poke.name) ? true : false } 
