@@ -12,8 +12,8 @@ function PokemonCard({name, classes, image, alt, caught, catchHandler, selectHan
   /***** Build *****/
 
   return (
-    <article className={`card container ${classes}`}>
-          <button onClick={clickHandler} className="cardContent">
+    <article className={`card container`}>
+          <button onClick={clickHandler} className={`cardContent ${classes}`}>
             <h3 className="cardTitle">{name}</h3>
             <img src={image} alt={alt}/>          
           </button>

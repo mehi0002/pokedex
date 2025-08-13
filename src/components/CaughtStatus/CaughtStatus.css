@@ -1,10 +1,33 @@
 button.status{
+    width: 2rem;
+    height: 2rem;
+
     padding: 0;
     background: transparent;
     border: none;
     cursor:pointer;
 }
 
-button.status img{
+/* button.status img{
     width: 2rem;
+} */
+
+button.caught{
+    background-image: url("/public/caught.svg");
+    transition: transform 300ms;
+}
+
+button.caught:hover{
+    background-image: url("/public/caught_hover.svg");
+    transform: scale(110%);
+}
+
+button.uncaught{
+    background-image: url("/public/uncaught.svg");
+    transition: transform 300ms;
+}
+
+button.uncaught:hover{
+    background-image: url("/public/uncaught_hover.svg");
+    transform: scale(110%);
 }

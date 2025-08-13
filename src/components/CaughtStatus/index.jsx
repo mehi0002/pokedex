@@ -14,19 +14,23 @@ function CaughtStatus({name, caught, toggleHandler}) {
   /**** Build *****/
   return (
     <button
-      className = "status" 
+      // className = "status interactive" 
+      className = {caught ?
+        'status caught' :
+        'status uncaught'
+      }
       aria-label={caught ? 
         `click to release ${pokeName}` :
         `click to catch ${pokeName}`
       }
       onClick={clickHandler}>
 
-      <img 
+      {/* <img 
         src={caught ? 
           '/src/components/CaughtStatus/assets/caught.svg' : 
           '/src/components/CaughtStatus/assets/uncaught.svg'}
         aria-hidden='true'
-      />
+      /> */}
     </button>
   );
 }

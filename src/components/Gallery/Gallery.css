@@ -7,7 +7,22 @@
 }
 
 #pokemonGallery .card:hover{
+    border: 1px solid var(--colour-highlight);
+}
+
+#pokemonGallery .cardContent{
+    transition: transform 300ms;
+}
+
+#pokemonGallery .cardContent:hover{
     transform: scale(105%);
+    border: 1px solid var(--colour-highlight);
+}
+
+#pokemonGallery .card .status{
+    position: relative;
+    top: 1rem;
+    left: 1rem;
 }
 
 #pokemonGallery ul li {
