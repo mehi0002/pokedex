@@ -6,6 +6,10 @@
     padding: 0;
 }
 
+#pokemonGallery .card{
+    overflow: hidden;
+}
+
 #pokemonGallery .card:hover{
     border: 1px solid var(--colour-highlight);
 }

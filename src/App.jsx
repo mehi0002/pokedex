@@ -109,7 +109,7 @@ function App() {
 
   /*** Build ***/
   return(
-    <div id="siteContainer">
+    <div id="siteContainer" className="container">
       <header id="siteHeader"> 
         <h1>Pokedex</h1> 
       </header>

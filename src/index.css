@@ -54,8 +54,10 @@ table {
     
     --colour-primary: #7DB5B1;                          /* Base colour - borders, fills */
     --colour-primary-trans: rgba(125, 181, 177, 0.15);  /* Transparent - containers */
-    --colour-secondary: rgba(222,236,235,0.9);          /* Light - background */
-    --colour-tertiary: rgba(208, 227, 226, 0.9);        /* Mid - overlays */
+    --colour-secondary: rgba(210, 228, 226,0.9);          /* Light - background */
+    /* --colour-tertiary: rgba(208, 227, 226, 0.9);        Mid - overlays */
+        --colour-tertiary: rgb(201, 222, 220);        /* Mid - overlays */
+    --colour-overlay: rgba(190, 216, 213, 0.9);
     --colour-dark: #0D0D0D;                             /* Text */
     --colour-highlight: rgb(185, 201, 78);              /* Hover border */
     --colour-glow: rgba(185, 201, 78, 0.5);             /* Hover inner glow */
@@ -113,7 +115,6 @@ button{
     background-color: var(--colour-primary-trans);
     border: 1px solid var(--colour-primary);
     border-radius: 0.5rem;
-    overflow: hidden;
 }
 
 .interactive{
@@ -146,7 +147,7 @@ button{
 
     padding-bottom: 1rem;
     text-align: center;
-    background-color: var(--colour-secondary);
+    background-color: var(--colour-tertiary);
 }
 
 #homeContent{
@@ -161,7 +162,7 @@ button{
 }
 
 #mainContent{
-    margin: 1rem;
+    margin: 1rem 1rem 1rem 0;
 }
 
 #sidebar{
@@ -198,7 +199,7 @@ button{
     justify-content: center;
 
     position: absolute;
-    left: -25rem;
+    left: -50rem;
     z-index: 3;
 }
 
@@ -212,7 +213,7 @@ button{
     flex-direction: column;
     align-items: center;
 
-    background-color: var(--colour-tertiary);
+    background-color: var(--colour-overlay);
 }
 
 /* Pop-up (Mobile vesion) */
@@ -221,20 +222,19 @@ button{
     height: 100dvh;
     left:0;
     top: 0;
-    background-color: var(--colour-secondary);
+    background-color: var(--colour-tertiary);
 }
 
 button#closePokeInfo{
     position: relative;
     margin-left: 0.5rem;
-    background-color: var(--colour-tertiary);
+    background-color: var(--colour-overlay);
 }
 
 /*** Pokemon Gallery ***/
 
 button#loadMore{
     margin: 1rem 0;
-    cursor:pointer;
 }
 
 /****** Extra small devices (phones, 600px and down) ******/
@@ -321,7 +321,7 @@ button#loadMore{
 
     #caughtList{
         position: fixed;
-        top: 7rem;
+        top: 8rem;
         width: 22rem;
         z-index: 3;
     }
@@ -336,9 +336,10 @@ button#loadMore{
         display: grid;
 
         position: fixed;
-        top: 12rem;
+        top: 13rem;
         left: auto;
         width: 22rem;
+        height: auto;
         z-index: 2;
     }
 
