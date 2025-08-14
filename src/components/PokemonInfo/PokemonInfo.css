@@ -1,3 +1,5 @@
+
+/*** Fonts ***/
 .pokeInfo h2{
     text-align: center;
 }
@@ -43,7 +45,7 @@
 
 .type{
     padding: 0.25rem;
-    border: 1px solid var(--colour-primary);
+    /* border: 1px solid var(--colour-primary); */
     width: fit-content;
     border-radius: 0.25rem;
 }
@@ -101,4 +103,95 @@ meter::-moz-meter-bar { /* Firefox Pseudo Class */
     .details{
         flex-direction: row-reverse;
     }
+}
+
+/*** Type Colours ***/
+.normal{
+    border: 1px solid rgb(168, 167, 122);
+    background-color: rgba(168, 167, 122, 0.25);
+}
+
+.fire{
+    border: 1px solid rgb(238, 129, 48);
+    background-color: rgba(238, 129, 48, 0.25);
+}
+
+.water{
+    border: 1px solid rgb(99, 144, 240);
+    background-color: rgba(99, 144, 240, 0.25);
+}
+
+.electric{
+    border: 1px solid rgb(247, 208, 44);
+    background-color: rgba(247, 208, 44, 0.25);
+}
+
+.grass{
+    border: 1px solid rgb(122, 199, 76);
+    background-color: rgba(122, 199, 76, 0.25);
+}
+
+.ice{
+    border: 1px solid rgb(92, 150, 148);
+    background-color: rgba(150, 217, 214, 0.25);
+}
+
+.fighting{
+    border: 1px solid rgb(194, 46, 40);
+    background-color: rgba(194, 46, 40, 0.25);
+}
+
+.poison{
+    border: 1px solid rgb(163, 62, 161);
+    background-color: rgba(163, 62, 161, 0.25);
+}
+
+.ground{
+    border: 1px solid rgb(226, 184, 101);
+    background-color: rgba(226, 184, 101, 0.25);
+}
+
+.flying{
+    border: 1px solid rgb(169, 143, 243);
+    background-color: rgba(169, 143, 243, 0.25);
+}
+
+.psychic{
+    border: 1px solid rgb(249, 85, 135);
+    background-color: rgba(249, 85, 135, 0.25);
+}
+
+.bug{
+    border: 1px solid rgb(166, 185, 26);
+    background-color: rgba(166, 185, 26, 0.25);
+}
+
+.rock{
+    border: 1px solid rgb(182, 161, 54);
+    background-color: rgba(182, 161, 54, 0.25);
+}
+
+.ghost{
+    border: 1px solid rgb(115, 87, 151);
+    background-color: rgba(115, 87, 151, 0.25);
+}
+
+.dragon{
+    border: 1px solid rgb(111, 53, 252);
+    background-color: rgba(111, 53, 252, 0.25);
+}
+
+.dark{
+    border: 1px solid rgb(112, 87, 70);
+    background-color: rgba(112, 87, 70, 0.25);
+}
+
+.steel{
+    border: 1px solid rgb(183, 183, 206);
+    background-color: rgba(183, 183, 206, 0.25);
+}
+
+.fairy{
+    border: 1px solid rgb(214, 133, 173);
+    background-color: rgba(214, 133, 173, 0.25);
 }
