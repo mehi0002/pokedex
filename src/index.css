@@ -55,9 +55,8 @@ table {
     --colour-primary: #7DB5B1;                          /* Base colour - borders, fills */
     --colour-primary-trans: rgba(125, 181, 177, 0.15);  /* Transparent - containers */
     --colour-secondary: rgba(210, 228, 226,0.9);          /* Light - background */
-    /* --colour-tertiary: rgba(208, 227, 226, 0.9);        Mid - overlays */
-        --colour-tertiary: rgb(201, 222, 220);        /* Mid - overlays */
-    --colour-overlay: rgba(190, 216, 213, 0.9);
+            --colour-tertiary: rgb(201, 222, 220);        /* Mid - BG */
+    --colour-overlay: rgba(190, 216, 213, 0.9);         /* Overlays */
     --colour-dark: #0D0D0D;                             /* Text */
     --colour-highlight: rgb(185, 201, 78);              /* Hover border */
     --colour-glow: rgba(185, 201, 78, 0.5);             /* Hover inner glow */
