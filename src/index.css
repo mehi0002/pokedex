@@ -168,7 +168,8 @@ button{
     position: sticky;
     top: 5rem;
     z-index: 2;
-    padding: 1rem;
+    padding: 1rem 1rem 1rem 0;
+    background-color: var(--colour-tertiary);
 }
 
 /*** Caught Pokemon List ***/
@@ -254,7 +255,6 @@ button#loadMore{
     #pokemonGallery{
         grid-template-columns: 1fr 1fr;
     }
-
 }
 
 /****** Tablet Landscape ******/
@@ -267,6 +267,12 @@ button#loadMore{
     #caughtList ul{
         grid-template-columns: 1fr 1fr;
     }
+
+    /* button#closePokeInfo{
+        position: relative;
+        right: auto;
+        margin-left: 0.5rem;
+    } */
 }
 
 @media only screen and (min-width: 800px) {
