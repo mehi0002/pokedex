@@ -3,6 +3,11 @@ import './PokemonInfo.css';
 
     function PokemonInfo ({poke}){
 
+    /*** Functions ***/
+    function closePokeInfo(){
+        document.getElementById("pokeInfo").classList.remove("view");
+    }
+
     /*** Build ***/
     return(
 
@@ -10,10 +15,17 @@ import './PokemonInfo.css';
             <section className="card">
                 <h2>{poke.name}</h2>
                 <img src={poke['sprites']['other']['official-artwork']['front_default']} alt={`Official art of ${name}`}/> 
+                <button 
+                  id="closePokeInfo" 
+                  className="container" 
+                  aria-label="close" 
+                  onClick={closePokeInfo}
+                >
+                  X
+                </button>
             </section>
             
             <section className="details">
-                
                 <div className="detailsSidebar">
                     {/* Types */}
                     <ul aria-label='types' className="types">

@@ -206,6 +206,7 @@ button{
 /* Inner card */
 #pokeInfo .pokeInfo{
     position: relative;
+    top: 2rem;
     width: auto;
     max-width: 22rem;
     

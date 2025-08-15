@@ -62,10 +62,6 @@ function App() {
     setPokemon([...pokemon, ...pokeList])
   }
 
-  function closePokeInfo(){
-    document.getElementById("pokeInfo").classList.remove("view");
-  }
-
   /****** Handlers *******/
 
   // Toggles the caught status and updates the pokemon state
@@ -132,17 +128,7 @@ function App() {
           {/* Pokemon info display */}
           <aside id="pokeInfo">
             { selectedPoke &&
-              <>
                 <PokemonInfo poke = {selectedPoke} />
-                <button 
-                  id="closePokeInfo" 
-                  className="container" 
-                  aria-label="close" 
-                  onClick={closePokeInfo}
-                >
-                  X
-                </button>
-              </>
             }
           </aside>
 
