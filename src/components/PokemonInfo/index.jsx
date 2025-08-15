@@ -17,7 +17,7 @@ import './PokemonInfo.css';
                 <img src={poke['sprites']['other']['official-artwork']['front_default']} alt={`Official art of ${name}`}/> 
                 <button 
                   id="closePokeInfo" 
-                  className="container" 
+                  className="container interactive" 
                   aria-label="close" 
                   onClick={closePokeInfo}
                 >
